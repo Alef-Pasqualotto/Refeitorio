@@ -1,8 +1,8 @@
 <?php
 include_once('conexao.php');
 $dados = $_POST;
-$conn = new Banco;
-$conn->conectar();
+$banco = new Banco;
+$conn = $banco->conectar();
 
 $conn->prepare('INSERT INTO :tabela (:campos) VALUES (:valores)');
 
@@ -15,16 +15,21 @@ $conn->prepare('INSERT INTO :tabela (:campos) VALUES (:valores)');
 
 switch ($dados['registro']) {
     case 1:
+        $tabela = 'ingrediente';
         $campos = 'nome,calorias';
+        //$conn->bindParam(':tabela', $tabela, ':campos', $campos, ':valores', implode(', ', array_splice($dados, 1)), PDO::PARAM_INT);
         break;
     case 2:
+        $tabela = 'item';
         $campos = 'descricao';
         break;
     case 3:
+        $tabela = 'usuario';
         $campos = 'nome, senha, email, crn';
         break;
     case 4:
+        $tabela = 'cardapio';
         $campos = 'dt, tipo, nutricionista_id';
         break;
 }
-?>
+?> 
