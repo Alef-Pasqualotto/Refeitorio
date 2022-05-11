@@ -4,7 +4,7 @@ $dados = $_POST;
 $banco = new Banco;
 $conn = $banco->conectar();
 
-$query = $conn->prepare('INSERT INTO ? (?) VALUES (?)');
+$conn->prepare('UPDATE :tabela (:campos) SET (:valores)');
 
 // dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
 // 1 = ingrediente
@@ -16,8 +16,8 @@ $query = $conn->prepare('INSERT INTO ? (?) VALUES (?)');
 switch ($dados['registro']) {
     case 1:
         $tabela = 'ingrediente';
-        $campos = 'nome, calorias';
-        $dados['calorias'] = (int)$dados['calorias'];
+        $campos = 'nome,calorias';
+        //$conn->bindParam(':tabela', $tabela, ':campos', $campos, ':valores', implode(', ', array_splice($dados, 1)), PDO::PARAM_INT);
         break;
     case 2:
         $tabela = 'item';
@@ -32,14 +32,4 @@ switch ($dados['registro']) {
         $campos = 'dt, tipo, nutricionista_id';
         break;
 }
-<<<<<<< HEAD
-
-$query->bindParam(1, $tabela, PDO::PARAM_INT);
-$query->bindParam(2, $campos, PDO::PARAM_STR);
-$query->bindParam(3, '('+ implode(', ', array_splice($dados, 1)) +')', PDO::PARAM_INT);
-
-$query->execute();
-?>
-=======
 ?> 
->>>>>>> 8d97466d0b74e897aec92af6e92fd2b959c88273
