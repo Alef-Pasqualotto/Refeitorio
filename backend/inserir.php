@@ -1,10 +1,10 @@
 <?php
-include_once('conexao.php');
+include_once('conecta.php');
 $dados = $_POST;
 $banco = new Banco;
 $conn = $banco->conectar();
 
-$conn->prepare('INSERT INTO :tabela (:campos) VALUES (:valores)');
+$query = $conn->prepare('INSERT INTO ? (?) VALUES (?)');
 
 // dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
 // 1 = ingrediente
@@ -16,8 +16,8 @@ $conn->prepare('INSERT INTO :tabela (:campos) VALUES (:valores)');
 switch ($dados['registro']) {
     case 1:
         $tabela = 'ingrediente';
-        $campos = 'nome,calorias';
-        //$conn->bindParam(':tabela', $tabela, ':campos', $campos, ':valores', implode(', ', array_splice($dados, 1)), PDO::PARAM_INT);
+        $campos = 'nome, calorias';
+        $dados['calorias'] = (int)$dados['calorias'];
         break;
     case 2:
         $tabela = 'item';
@@ -32,4 +32,10 @@ switch ($dados['registro']) {
         $campos = 'dt, tipo, nutricionista_id';
         break;
 }
-?> 
+
+$query->bindParam(1, $tabela, PDO::PARAM_INT);
+$query->bindParam(2, $campos, PDO::PARAM_STR);
+$query->bindParam(3, '('+ implode(', ', array_splice($dados, 1)) +')', PDO::PARAM_INT);
+
+$query->execute();
+?>
