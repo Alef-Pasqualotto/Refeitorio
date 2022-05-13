@@ -2,9 +2,11 @@
 include_once('conecta.php');
 $dados = $_POST;
 $banco = new Banco;
-$conn = $banco->conectar();
-
-$query = $conn->prepare('INSERT INTO ? (?) VALUES (?)');
+try{
+    $conn = $banco->conectar();
+} catch(PDOException $e){
+    echo 'Falha ao salvar os arquivos. Favor, tente mais tarde.';
+}
 
 // dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
 // 1 = ingrediente
@@ -15,31 +17,35 @@ $query = $conn->prepare('INSERT INTO ? (?) VALUES (?)');
 
 switch ($dados['registro']) {
     case 1:
-        $tabela = 'ingrediente';
-        $campos = 'nome, calorias';
-        $dados['calorias'] = (int)$dados['calorias'];
+        $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias) VALUES (:nome, :calorias);');        
+        $query->execute([
+            ':nome' => $dados['nome'],
+            ':calorias' => $dados['calorias']
+        ]);
         break;
     case 2:
-        $tabela = 'item';
-        $campos = 'descricao';
+        $query = $conn->prepare('INSERT INTO item (nome, calorias) VALUES (:descricao);');        
+        $query->execute([
+            ':descricao' => $dados['descricao']            
+        ]);
         break;
-    case 3:
-        $tabela = 'usuario';
-        $campos = 'nome, senha, email, crn';
+    case 3:        
+        $query = $conn->prepare('INSERT INTO usuario (nome, senha, email, crn) VALUES (:nome, :senha, :email, :crn);');        
+        $query->execute([
+            ':nome' => $dados['nome'],
+            ':senha' => $dados['senha'],
+            ':email' => $dados['email'],
+            ':crn' => isset($dados['senha']) ? $dados['senha'] : null
+        ]);
         break;
-    case 4:
-        $tabela = 'cardapio';
-        $campos = 'dt, tipo, nutricionista_id';
+    case 4:        
+        $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');        
+        $query->execute([
+            ':dt' => $dados['data'],
+            ':tipo' => $dados['tipo'],
+            ':nutricionista' => $dados['nutricionista']
+
+        ]);
         break;
 }
-<<<<<<< HEAD
-
-$query->bindParam(1, $tabela, PDO::PARAM_INT);
-$query->bindParam(2, $campos, PDO::PARAM_STR);
-$query->bindParam(3, '('+ implode(', ', array_splice($dados, 1)) +')', PDO::PARAM_INT);
-
-$query->execute();
 ?>
-=======
-?> 
->>>>>>> 8d97466d0b74e897aec92af6e92fd2b959c88273
