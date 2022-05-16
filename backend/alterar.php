@@ -1,10 +1,8 @@
 <?php
 include_once('conecta.php');
-$dados = $_POST;
+$dados = $_GET;
 $banco = new Banco;
 $conn = $banco->conectar();
-
-$conn->prepare('UPDATE :tabela (:campos) SET (:valores)');
 
 // dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
 // 1 = ingrediente
@@ -15,21 +13,35 @@ $conn->prepare('UPDATE :tabela (:campos) SET (:valores)');
 
 switch ($dados['registro']) {
     case 1:
-        $tabela = 'ingrediente';
-        $campos = 'nome,calorias';
-        //$conn->bindParam(':tabela', $tabela, ':campos', $campos, ':valores', implode(', ', array_splice($dados, 1)), PDO::PARAM_INT);
+        $query = $conn->prepare('UPDATE ingrediente (nome, calorias) SET (:nome, :calorias);');        
+        $query->execute([
+            ':nome' => $dados['nome'],
+            ':calorias' => $dados['calorias']
+        ]);
         break;
-    case 2:
-        $tabela = 'item';
-        $campos = 'descricao';
-        break;
-    case 3:
-        $tabela = 'usuario';
-        $campos = 'nome, senha, email, crn';
-        break;
-    case 4:
-        $tabela = 'cardapio';
-        $campos = 'dt, tipo, nutricionista_id';
-        break;
-}
-?> 
+        case 2:
+            $query = $conn->prepare('UPDATE item (descricao) SET (:descricao);');        
+            $query->execute([
+                ':descricao' => $dados['descricao']            
+            ]);
+            break;
+       /*  case 3:        
+            $query = $conn->prepare('UPDATE usuario (nome, senha, email, crn) SET (:nome, :senha, :email, :crn);');        
+            $query->execute([
+                ':nome' => $dados['nome'],
+                ':senha' => $dados['senha'],
+                ':email' => $dados['email'],
+                ':crn' => isset($dados['senha']) ? $dados['senha'] : null
+            ]);
+            break; */
+        case 3:        
+            $query = $conn->prepare('UPDATE cardapio (dt, tipo, nutricionista_id) SET (:dt, :tipo, :nutricionista);');        
+            $query->execute([
+                ':dt' => $dados['data'],
+                ':tipo' => $dados['tipo'],
+                ':nutricionista' => $dados['nutricionista']
+    
+            ]);
+            break;
+    }
+    ?>
