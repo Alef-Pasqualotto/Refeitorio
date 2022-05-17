@@ -1,5 +1,4 @@
 <?php
-header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 include_once('conecta.php');
 $dados = $_POST;
 $banco = new Banco;
