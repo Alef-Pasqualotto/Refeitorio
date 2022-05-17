@@ -1,6 +1,6 @@
 <?php
 include_once('conecta.php');
-$dados = $_GET;
+$dados = $_POST;
 $banco = new Banco;
 $conn = $banco->conectar();
 
@@ -12,7 +12,7 @@ $conn = $banco->conectar();
 
 switch ($dados['registro']) {
     case 1:
-        $query = $conn->prepare('UPDATE ingrediente (nome, calorias) SET (:nome, :calorias) WHERE ingrediente_id = :id;');        
+        $query = $conn->prepare(' UPDATE ingrediente SET nome = :nome, calorias = :calorias  WHERE ingrediente_id = :id ;');        
         $query->execute([
             ':id' => $dados['ingrediente_id'],
             ':nome' => $dados['nome'],
@@ -20,14 +20,14 @@ switch ($dados['registro']) {
         ]);
         break;
         case 2:
-            $query = $conn->prepare('UPDATE item (descricao) SET (:descricao) WHERE item_id = :id;');        
+            $query = $conn->prepare('UPDATE item SET descricao = :descricao WHERE item_id = :id;');        
             $query->execute([
                 ':id' => $dados['item_id'],
                 ':descricao' => $dados['descricao']            
             ]);
             break;
         case 3:        
-            $query = $conn->prepare('UPDATE cardapio (dt, tipo, nutricionista_id) SET (:dt, :tipo, :nutricionista) WHERE cardapio_id = :id;');        
+            $query = $conn->prepare('UPDATE cardapio SET dt = :dt, tipo = :tipo, nutricionista_id = :nutricionista WHERE cardapio_id = :id;');        
             $query->execute([
                 ':id' => $dados['cardapio_id'],
                 ':dt' => $dados['data'],
