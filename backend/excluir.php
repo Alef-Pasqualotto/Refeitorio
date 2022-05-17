@@ -1,6 +1,6 @@
 <?php
-include_once('banco.php');
-$id = $_GET['id'];
+include_once('conecta.php');
+$dados = $_POST;
 $banco = new Banco;
 $conn = $banco->conectar();
 
@@ -9,42 +9,25 @@ $conn = $banco->conectar();
 // 2 = item
 // 3 = usuario
 // 4 = cardapio
-
-switch ($_GET['tabela']) {
+switch ($dados['registro']) {
     case 1:
-        $tabela = "ingrediente";
+        $query = $conn->prepare(' DELETE FROM ingrediente  WHERE ingrediente_id = :id ;');        
+        $query->execute([ ':id' => $dados['ingrediente_id']]);
+        break;
         break;
     case 2:
-        $tabela = "item";
+        $query = $conn->prepare(' DELETE FROM item  WHERE item_id = :id ;');        
+        $query->execute([ ':id' => $dados['item_id']]);
         break;
     case 3:
-        $tabela = 'usuario';
+        $query = $conn->prepare(' DELETE FROM usuario  WHERE usuario_id = :id ;');        
+        $query->execute([ ':id' => $dados['usuario_id']]);
+        break;
         break;
     case 4:
-        $tabela = 'cardapio';
+        $query = $conn->prepare(' DELETE FROM cardapio  WHERE cardapio_id = :id ;');        
+        $query->execute([ ':id' => $dados['cardapio_id']]);
+        break;
         break;
 }
-
-function findByPk($id){
-    $db = new PDO("mysql:host=localhost;dbname=refeicoes", "root", "");
-    $consulta = $db->prepare("SELECT * FROM :tabela WHERE id=:id");
-    $consulta->execute([':id' => $id, ':tabela' => $tabela]);
-    return $consulta;
-}
-
-function remover(){
-    try {
-        $db = new PDO("mysql:host=localhost;dbname=refeicoes", "root", "");
-        $consulta = $db->prepare("DELETE FROM :tabela WHERE id= :id");
-        $consulta->execute([':id' => $id, ':tabela' => $tabela]);
-    }catch(PDOException $e){
-        die($e->getMessage());
-    }
-}
-
-$item = findByPk($id);
-if (!$item) throw new Exception("item da tabela não encontrado!");
-$item->remover();
-print $item;
-
 ?>
