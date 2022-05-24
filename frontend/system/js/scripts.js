@@ -23,4 +23,14 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
-});
+}
+);
+
+function validaSenha(){
+    if(document.registration.newpassword.value!= document.registration.confirmpassword.value){
+        alert("O valor inserido nos campos de senha não concide!");
+        document.registration.confirmpassword.focus();
+        return false;
+    }
+    return true;
+}

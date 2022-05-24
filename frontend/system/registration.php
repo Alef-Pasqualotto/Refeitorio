@@ -1,30 +1,5 @@
-<?php
-include_once(__DIR__ . '..\..\..\backend\conecta.php');
-if(isset($_POST['submit']))
-{
-$nome=$_POST['nome'];
-$lname=$_POST['lname'];
-$email=$_POST['email'];
-$npwd=md5($_POST['newpassword']);
-$ret=mysqli_query($con,"select id from tblregistration where email='$email'");
-$count=mysqli_num_rows($ret);
-if($count==0){
-$query=mysqli_query($con,"insert into tblregistration(firstName,lastName,email,userPassword) values('$nome','$lname','$email','$npwd')");
-if($query){
-echo "<script>alert('Registration successfull. Please login now');</script>"; 
-echo "<script>window.location.href ='login.php'</script>";
-} else {
-echo "<script>alert('Something went wrong. Please try again');</script>"; 
-echo "<script>window.location.href ='registration.php'</script>";
-}} else {
-echo "<script>alert('Email Id or Mobile Number already registered.Please try again.');</script>"; 
-echo "<script>window.location.href ='registration.php'</script>";
-}
-}
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,17 +9,6 @@ echo "<script>window.location.href ='registration.php'</script>";
         <title>Cardápio RU | Cadastro </title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-          <script type="text/javascript">
-function validaSenha()
-{
-if(document.registration.newpassword.value!= document.registration.confirmpassword.value){
-    alert("O valor inserido nos campos de senha não concide!");
-    document.registration.confirmpassword.focus();
-    return false;
-}
-return true;
-}
-</script>
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
