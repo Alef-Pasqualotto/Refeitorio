@@ -1,10 +1,10 @@
 <?php session_start();
-include_once('includes/config.php');
+include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(isset($_POST['login']))
   {
     $emailcon=$_POST['logindetail'];
     $password=md5($_POST['userpassword']);
-    $query=mysqli_query($con,"select mobileNumber,emailId,id from tblregistration where  (emailId='$emailcon' || mobileNumber='$emailcon') && userPassword='$password' ");
+    $query=mysqli_query($con,"select mobileNumber,emailId,id from tblregistration where  (emailId='$emailcon' ) && userPassword='$password' ");
     $ret=mysqli_fetch_array($query);
     if($ret>0){
       $_SESSION['edmsid']=$ret['id'];
