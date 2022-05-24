@@ -21,9 +21,6 @@ switch ($_POST['tabela']){
         $consulta = $consulta . ' item';
         break;
     case 3:
-        $consulta = $consulta . ' usuario';
-        break;
-    case 4:
         $consulta = $consulta . ' cardapio';
         break;
 }
