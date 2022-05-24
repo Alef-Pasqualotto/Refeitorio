@@ -6,14 +6,14 @@ if(strlen( $_SESSION["edmsid"])==0)
 } else {
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>e-Diary Management System | Dashboard</title>
+        <title>Cardápio RU - IFRS</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@ if(strlen( $_SESSION["edmsid"])==0)
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Cardápio Semanal</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Refeições</li>
                         </ol>
                         <hr />
                         <div class="row">
@@ -46,14 +46,14 @@ $totalnotes=mysqli_num_rows($query);
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="me-3">
-                                                <div class="text-white-75 small">Listed Categories</div>
+                                                <div class="text-white-75 small">Adicionar Refeição</div>
                                                 <div class="text-lg fw-bold"><?php echo $listedcategories;?></div>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between small">
-                                        <a class="text-white stretched-link" href="manage-categories.php">View Details</a>
+                                        <a class="text-white stretched-link" href="manage-categories.php">Ver Detalhes</a>
                                    
                                     </div>
                                 </div>
@@ -63,14 +63,14 @@ $totalnotes=mysqli_num_rows($query);
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="me-3">
-                                                <div class="text-white-75 small">Total Notes</div>
+                                                <div class="text-white-75 small">Total de Refeições</div>
                                                 <div class="text-lg fw-bold"><?php echo $totalnotes;?></div>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square feather-xl text-white-50"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between small">
-                                        <a class="text-white stretched-link" href="manage-notes.php">View Details</a>
+                                        <a class="text-white stretched-link" href="manage-notes.php">Ver Detalhes</a>
                        
                                     </div>
                                 </div>
@@ -82,26 +82,26 @@ $totalnotes=mysqli_num_rows($query);
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Recently Added Notes
+                                Cardápio Semanal
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                            <tr>
                                         <th>#</th>
-                                            <th>Note Title</th>
-                                             <th>Category</th>
-                                            <th>Creation date</th>
-                                            <th>Action</th>
+                                            <th>Refeição</th>
+                                             <th>Categoria</th>
+                                            <th>Data</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                             <tr>
                                         <th>#</th>
-                                            <th>Note Title</th>
-                                             <th>Category</th>
-                                            <th>Creation date</th>
-                                            <th>Action</th>
+                                            <th>Refeição</th>
+                                             <th>Categoria</th>
+                                            <th>Data</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -119,8 +119,8 @@ while($row=mysqli_fetch_array($query))
                                             <td><?php echo htmlentities($row['noteCategory']);?></td>
                                             <td> <?php echo htmlentities($row['creationDate']);?></td>
                                             <td>
-                                            <a href="view-note.php?noteid=<?php echo $row['id']?>" class="btn btn-primary">View</a> 
-                                            <a href="manage-notes.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                                            <a href="view-note.php?noteid=<?php echo $row['id']?>" class="btn btn-primary">Ver</a> 
+                                            <a href="manage-notes.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Excluir</a></td>
                                         </tr>
                                         <?php $cnt=$cnt+1; } ?>
                                     </tbody>

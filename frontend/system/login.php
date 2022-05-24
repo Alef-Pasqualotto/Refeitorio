@@ -19,7 +19,7 @@ if(isset($_POST['login']))
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -52,7 +52,6 @@ if(isset($_POST['login']))
                                             </div>
                                 
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password-recovery.php">Esqueceu a senha?</a>
                                                 <button  class="btn btn-primary"  type="submit" name="login">Login</button>
                                             </div>
                                         </form>

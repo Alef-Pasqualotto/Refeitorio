@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +17,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Centro</div>
+                            <div class="sb-sidenav-menu-heading">Sistema</div>
                             <a class="nav-link" href="registration.php">
                                 <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                                 Cadastro
