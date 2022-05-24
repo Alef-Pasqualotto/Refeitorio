@@ -1,15 +1,15 @@
-<?php include_once('includes/config.php');
+<?php
+include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(isset($_POST['submit']))
 {
-$fname=$_POST['fname'];
+$nome=$_POST['nome'];
 $lname=$_POST['lname'];
-$emailid=$_POST['emailid'];
-$mobileno=$_POST['mobileno'];
+$email=$_POST['email'];
 $npwd=md5($_POST['newpassword']);
-$ret=mysqli_query($con,"select id from tblregistration where emailId='$emailid' || mobileNumber='$mobileno'");
+$ret=mysqli_query($con,"select id from tblregistration where email='$email'");
 $count=mysqli_num_rows($ret);
 if($count==0){
-$query=mysqli_query($con,"insert into tblregistration(firstName,lastName,emailId,mobileNumber,userPassword) values('$fname','$lname','$emailid','$mobileno','$npwd')");
+$query=mysqli_query($con,"insert into tblregistration(firstName,lastName,email,userPassword) values('$nome','$lname','$email','$npwd')");
 if($query){
 echo "<script>alert('Registration successfull. Please login now');</script>"; 
 echo "<script>window.location.href ='login.php'</script>";
@@ -35,13 +35,12 @@ echo "<script>window.location.href ='registration.php'</script>";
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
           <script type="text/javascript">
-function valid()
+function validaSenha()
 {
-if(document.registration.newpassword.value!= document.registration.confirmpassword.value)
-{
-alert("Password and Confirm Password Field do not match  !!");
-document.registration.confirmpassword.focus();
-return false;
+if(document.registration.newpassword.value!= document.registration.confirmpassword.value){
+    alert("O valor inserido nos campos de senha não concide!");
+    document.registration.confirmpassword.focus();
+    return false;
 }
 return true;
 }
@@ -58,30 +57,25 @@ return true;
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Cardápio RU</h3></div>
                                  <h3 class="text-center font-weight-light my-4">Cadastro de Usuário</h3>
                                     <div class="card-body">
-                                        <form method="post" name="registration" onSubmit="return valid();">
+                                        <form method="post" name="registration" action="../../backend/inserir.php">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" name="fname" placeholder="Insira seu Primeiro Nome"  required />
-                                                        <label for="inputFirstName">Primeiro Nome</label>
+                                                        <input type="hidden" value="3" name="registro" id="registro">
+                                                        <input class="form-control" id="nome" type="text" name="nome" placeholder="Insira seu Primeiro Nome"  required />
+                                                        <label for="nome">Nome</label>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" name="lname" placeholder="Insira seu Sobrenome" required />
-                                                        <label for="inputLastName">Sobrenome</label>
-                                                    </div>
-                                                </div>
+                                                </div>                                                
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" name="emailid" placeholder="nome@exemplo.com" />
+                                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="nome@exemplo.com" />
                                                 <label for="inputEmail">Endereço de Email</label>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Crie uma Senha" name="newpassword"  id="newpassword" />
-                                                        <label for="inputPassword">Senha</label>
+                                                        <input class="form-control" type="password" placeholder="Crie uma Senha" name="senha"  id="senha"/>
+                                                        <label for="senha">Senha</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
