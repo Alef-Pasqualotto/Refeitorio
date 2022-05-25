@@ -52,7 +52,7 @@ switch ($dados['registro']) {
             ':nome' => $dados['nome'],
             ':senha' => $dados['senha'],
             ':email' => $dados['email'],
-            ':crn' => isset($dados['senha']) ? $dados['senha'] : null
+            ':crn' => isset($dados['crn']) ? $dados['crn'] : null
         ]);
         break;
 
