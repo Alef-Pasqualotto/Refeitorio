@@ -26,7 +26,7 @@
                         </div>
                     </div>
 <?php
-$id=intval($_SESSION["edmsid"]);
+$id=intval($_SESSION["usuario_id"]);
 $query=mysqli_query($con,"select * from tblregistration where id='$id'");
 while($row=mysqli_fetch_array($query))
 { $fullname=$row['firstName']." ".$row['lastName'];

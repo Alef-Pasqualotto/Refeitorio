@@ -1,7 +1,7 @@
 <?php session_start();
 error_reporting(0);
 include_once('includes/config.php');
-if(strlen( $_SESSION["edmsid"])==0)
+if(strlen( $_SESSION["usuario_id"])==0)
 {   
     header('location:logout.php');
 } else {
@@ -33,7 +33,7 @@ if(strlen( $_SESSION["edmsid"])==0)
                         <hr />
                         <div class="row">
 <?php
-$userid=$_SESSION["edmsid"];
+$userid=$_SESSION["usuario_id"];
 $ret=mysqli_query($con,"select id from tblcategory where createdBy='$userid'");
 $listedcategories=mysqli_num_rows($ret);
 
@@ -107,7 +107,7 @@ $totalnotes=mysqli_num_rows($query);
                                     </tfoot>
                                     <tbody>
 <?php 
-$userid=$_SESSION["edmsid"];
+$userid=$_SESSION["usuario_id"];
 $query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
 $cnt=1;
 while($row=mysqli_fetch_array($query))

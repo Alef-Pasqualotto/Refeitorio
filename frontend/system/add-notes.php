@@ -1,28 +1,8 @@
 <?php session_start();
 include_once('includes/config.php');
-if(strlen( $_SESSION["edmsid"])==0)
+if(strlen( $_SESSION["usuario_id"])==0)
 {   header('location:logout.php');
-} else {
-
-if(isset($_POST['submit']))
-{
-    $category=$_POST['category'];
-    $ntitle=$_POST['notetitle'];
-    $ndescription=$_POST['notediscription'];
-    $createdby=$_SESSION['edmsid'];
-
-$sql=mysqli_query($con,"insert into tblnotes(noteCategory,noteTitle,noteDescription,createdBy) values('$category','$ntitle','$ndescription','$createdby')");
-echo "<script>alert('Note Added  successfully');</script>";
-echo "<script>window.location.href='manage-notes.php'</script>";
 }
-
-
-
-
-
-
-
-
 ?>
 
 
@@ -57,7 +37,7 @@ echo "<script>window.location.href='manage-notes.php'</script>";
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-<form  method="post" enctype="multipart/form-data">                                
+<form  method="post" action="../../backend/inserir.php">                                
 
 
 
@@ -70,11 +50,7 @@ echo "<script>window.location.href='manage-notes.php'</script>";
 <div class="row" style="margin-top:1%;">
 <div class="col-2">Ingredientes</div>
 <div class="col-6">
-<input type="checkbox" name="ingredientes" value="arroz"> Arroz<br>
-<input type="checkbox" name="ingredientes" value="feijão"> Feijão<br>
-<input type="checkbox" name="ingredientes" value="carnedegado"> Carne de Gado<br>
-<input type="checkbox" name="ingredientes" value="frango"> Frango<br>
-<input type="checkbox" name="ingredientes" value="carnedeporco"> Carne de Porco<br>
+<?php include_once('includes/ingredientes.php');?>
 </div>
 </div>
 
@@ -103,4 +79,3 @@ echo "<script>window.location.href='manage-notes.php'</script>";
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
 </html>
-<?php }  ?>

@@ -20,7 +20,7 @@ if(isset($_POST['login']))
     $ret = $stmt->fetch();
     
     if($ret){        
-        $_SESSION['edmsid']=$ret['usuario_id'];
+        $_SESSION['usuario_id']=$ret['usuario_id'];
         $_SESSION['uemail']=$ret['email'];
       echo "<script>window.location.href='dashboard.php'</script>";
     }
