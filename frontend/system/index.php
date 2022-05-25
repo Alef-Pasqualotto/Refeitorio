@@ -18,7 +18,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Sistema</div>
-                            <a class="nav-link" href="registration.php">
+                            <a class="nav-link" href="registration.html">
                                 <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                                 Cadastro
                             </a>
