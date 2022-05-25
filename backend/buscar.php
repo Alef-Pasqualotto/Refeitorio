@@ -30,15 +30,20 @@ Permitir que o usuário pesquise por um tipo de refeição;
 Permitir que o usuário pesquise por uma data específica;
 Permitir que o usuário pesquise por um item específico; */
 
+//mostrar descrição e calorias - ingredientes
+//mostrar descrição - item
+//mostrar data e tipo - cardápio
+//mostrar nome e crn - nutricionista 
+
 switch ($_POST['tabela']) {
     case 1:
-        $query = $conn->prepare(' SELECT * from cardapio WHERE tipo = :tipo ;');        
+        $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio WHERE tipo = :tipo ;');        
         $query->execute([
             ':tipo' => $dados['tipo']
         ]);
         break;
         case 2:
-            $query = $conn->prepare('SELECT * from cardapio INNER JOIN WHERE dt = :dt ;');        
+            $query = $conn->prepare('SELECT * from cardapio INNER WHERE dt = :dt ;');        
             $query->execute([
                 ':dt' => $dados['dt']                          
             ]);
