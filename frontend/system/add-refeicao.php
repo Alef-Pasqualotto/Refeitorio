@@ -52,7 +52,7 @@ echo "<script>window.location.href='manage-notes.php'</script>";
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Adicionar Refeição</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="dashboard.php">Cardápio</a></li>
+                            <li class="breadcrumb-item"><a href="cardapio.php">Cardápio</a></li>
                             <li class="breadcrumb-item active">Adicionar Refeição</li>
                         </ol>
                         <div class="card mb-4">
@@ -62,13 +62,25 @@ echo "<script>window.location.href='manage-notes.php'</script>";
 
 
 <div class="row" style="margin-top:1%;">
-<div class="col-2">Nome do Prato</div>
-<div class="col-6"><input type="text" name="notetitle" placeholder="Insira o nome do prato" class="form-control"></textarea>
+<div class="col-2">Nome do Prato:</div>
+<div class="col-6"><input type="text" required name="notetitle" placeholder="Insira o nome do prato" class="form-control"></textarea>
 </div>
 </div>
 
 <div class="row" style="margin-top:1%;">
-<div class="col-2">Ingredientes</div>
+<div class="col-2">Tipo:</div>
+<div class="col-6">
+<select name="tipoprato" required id="tipoprato" class="form-control">
+  <option value="" disabled selected hidden>Insira o tipo da refeição</option>
+  <option value="cafe">Café</option>
+  <option value="almoco">Almoço</option>
+  <option value="janta">Janta</option>
+</select>
+</div>
+</div>
+
+<div class="row" style="margin-top:1%;">
+<div class="col-2">Ingredientes:</div>
 <div class="col-6">
 <input type="checkbox" name="ingredientes" value="arroz"> Arroz<br>
 <input type="checkbox" name="ingredientes" value="feijão"> Feijão<br>

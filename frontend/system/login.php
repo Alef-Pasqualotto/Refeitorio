@@ -22,7 +22,7 @@ if(isset($_POST['login']))
     if($ret){        
         $_SESSION['edmsid']=$ret['usuario_id'];
         $_SESSION['uemail']=$ret['email'];
-      echo "<script>window.location.href='dashboard.php'</script>";
+      echo "<script>window.location.href='cardapio.php'</script>";
     }
     else{
         echo "<script>alert('Não foi encontrado usuário com o email e senha informados');</script>";
