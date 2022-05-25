@@ -57,3 +57,7 @@ INSERT INTO INGREDIENTE_ITEM VALUES (4, 3, 2);
 
 INSERT INTO USUARIO (nome, senha, email) VALUES ('Francisco Cleber', 'vrido', 'megafrancisco@gmail.com');
 INSERT INTO USUARIO VALUES (2, 'Roberta Guimarães', 'tauba', 'roberta_mineira@hotmail.com', 4);
+
+INSERT INTO cardapio(dt, tipo, nutricionista_id) VALUES ('22/22/2222', '3','2');
+
+INSERT INTO cardapio_item(cardapio_id, item_id) VALUES ('14','2');

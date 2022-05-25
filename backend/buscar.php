@@ -51,7 +51,7 @@ switch ($_POST['tabela']) {
         INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
         INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
         INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
-        WHERE cardapio.tipo = 1 ;');        
+        WHERE cardapio.tipo = 3 ;');        
         $query->execute([
             ':tipo' => $dados['cardapio.tipo']
         ]);
