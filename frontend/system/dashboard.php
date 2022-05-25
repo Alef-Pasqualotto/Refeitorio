@@ -2,7 +2,8 @@
 error_reporting(0);
 include_once('includes/config.php');
 if(strlen( $_SESSION["edmsid"])==0)
-{   header('location:logout.php');
+{   
+    header('location:logout.php');
 } else {
 ?>
 <!DOCTYPE html>

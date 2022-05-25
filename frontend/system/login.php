@@ -2,17 +2,30 @@
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(isset($_POST['login']))
   {
-    $emailcon=$_POST['logindetail'];
-    $password=md5($_POST['userpassword']);
-    $query=mysqli_query($con,"select mobileNumber,emailId,id from tblregistration where  (emailId='$emailcon' ) && userPassword='$password' ");
-    $ret=mysqli_fetch_array($query);
-    if($ret>0){
-      $_SESSION['edmsid']=$ret['id'];
-    $_SESSION['uemail']=$ret['emailId'];
+    echo '<pre>';
+    var_dump($_POST);
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $banco = new Banco;
+    $conn = $banco->conectar();    
+    
+    $stmt = $conn->prepare('SELECT * FROM usuario WHERE email = :email AND senha = :senha');
+    $stmt->execute([
+        ':email' => $email,
+        ':senha' => $password
+        ]
+    );    
+    $ret = $stmt->fetch();
+    
+    if($ret){        
+        $_SESSION['edmsid']=$ret['usuario_id'];
+        $_SESSION['uemail']=$ret['email'];
       echo "<script>window.location.href='dashboard.php'</script>";
     }
     else{
- echo "<script>alert('Invalid details');</script>";
+        echo "<script>alert('Não foi encontrado usuário com o email e senha informados');</script>";
     }
   }
   ?>
@@ -43,11 +56,11 @@ if(isset($_POST['login']))
                                     <div class="card-body">
                                         <form method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" name="logindetail" placeholder="Registered Email id / Mobile Number" required />
+                                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="Email" required />
                                                 <label for="inputEmail">Endereço de Email</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="userpassword" required />
+                                                <input class="form-control" id="inputPassword" type="password" placeholder="Senha" name="password" required />
                                                 <label for="inputPassword">Senha</label>
                                             </div>
                                 
