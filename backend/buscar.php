@@ -35,15 +35,23 @@ Permitir que o usuário pesquise por um item específico; */
 //mostrar data e tipo - cardápio
 //mostrar nome e crn - nutricionista 
 
-switch ($_POST['tabela']) {
-    case 1:
-        $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_id 
+/* SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
         INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id  
         INNER JOIN item on cardapio_item.item_id = item.item_id 
         INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
-        INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.item_id
+        INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
         INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
-        WHERE cardapio.tipo = :tipo ;');        
+        WHERE item.descricao = "muito bom"; */
+
+switch ($_POST['tabela']) {
+    case 1:
+        $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
+        INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id  
+        INNER JOIN item on cardapio_item.item_id = item.item_id 
+        INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
+        INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
+        INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
+        WHERE cardapio.tipo = 1 ;');        
         $query->execute([
             ':tipo' => $dados['cardapio.tipo']
         ]);
@@ -55,7 +63,13 @@ switch ($_POST['tabela']) {
             ]);
             break;
         case 3:        
-            $query = $conn->prepare('SELECT * from ingrediente WHERE nome = :nome;');        
+            $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
+            INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id  
+            INNER JOIN item on cardapio_item.item_id = item.item_id 
+            INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
+            INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
+            INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
+            WHERE ingrediente.nome = :nome ;');        
             $query->execute([
                 ':nome' => $dados['nome']
             ]);
