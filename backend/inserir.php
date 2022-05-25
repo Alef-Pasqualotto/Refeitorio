@@ -54,6 +54,7 @@ switch ($dados['registro']) {
             ':email' => $dados['email'],
             ':crn' => isset($dados['crn']) ? $dados['crn'] : null
         ]);
+        header('location:..\frontend\system\login.php');
         break;
 
         //cardapio e cardapio_item
@@ -83,4 +84,6 @@ function pegaUltimoId($conexao){
     $query->execute();
     return $query->fetch(PDO::FETCH_NUM);
 }
+
+
 ?>
