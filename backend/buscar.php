@@ -37,9 +37,15 @@ Permitir que o usuário pesquise por um item específico; */
 
 switch ($_POST['tabela']) {
     case 1:
-        $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio WHERE tipo = :tipo ;');        
+        $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_id 
+        INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id  
+        INNER JOIN item on cardapio_item.item_id = item.item_id 
+        INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
+        INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.item_id
+        INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
+        WHERE cardapio.tipo = :tipo ;');        
         $query->execute([
-            ':tipo' => $dados['tipo']
+            ':tipo' => $dados['cardapio.tipo']
         ]);
         break;
         case 2:
