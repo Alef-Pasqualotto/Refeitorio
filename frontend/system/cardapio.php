@@ -1,6 +1,7 @@
 <?php session_start();
 error_reporting(0);
 include_once('includes/config.php');
+include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(strlen( $_SESSION["usuario_id"])==0)
 {   
     header('location:logout.php');
@@ -37,8 +38,8 @@ $userid=$_SESSION["usuario_id"];
 $ret=mysqli_query($con,"select id from tblcategory where createdBy='$userid'");
 $listedcategories=mysqli_num_rows($ret);
 
-$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
-$totalnotes=mysqli_num_rows($query);
+//$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
+//$totalnotes=mysqli_num_rows($query);
 ?>
         <div class="col-lg-6 col-xl-2 mb-4"></div>
 
@@ -48,7 +49,7 @@ $totalnotes=mysqli_num_rows($query);
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="me-3">
                                                 <div class="text-white-75 small">Adicionar Refeição</div>
-                                                <div class="text-lg fw-bold"><?php echo $listedcategories;?></div>
+                                                <div class="text-lg fw-bold"><?php //echo $listedcategories;?></div>
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                                         </div>
@@ -64,8 +65,7 @@ $totalnotes=mysqli_num_rows($query);
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="me-3">
-                                                <div class="text-white-75 small">Total de Refeições</div>
-                                                <div class="text-lg fw-bold"><?php echo $totalnotes;?></div>
+                                                <div class="text-white-75 small">Total de Refeições</div>                                                
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square feather-xl text-white-50"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                                         </div>
@@ -107,8 +107,11 @@ $totalnotes=mysqli_num_rows($query);
                                     </tfoot>
                                     <tbody>
 <?php 
-$userid=$_SESSION["usuario_id"];
-$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
+
+$query = $conn->prepare("select * from usuario where usuario_id=:id");
+$query->execute([':id' => $id]);
+$usuario = $query->fetch();
+    
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {

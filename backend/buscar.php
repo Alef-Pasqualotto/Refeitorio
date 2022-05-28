@@ -64,9 +64,11 @@ switch ($_POST['tabela']) {
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
             INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
             WHERE cardapio.dt = :dt ;');        
+            echo '<pre>';
             $query->execute([
                 ':dt' => $dados['dt']                          
-            ]);
+            ]); 
+            var_dump($query->fetch());
             break;
         case 3:        
             $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
