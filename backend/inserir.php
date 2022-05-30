@@ -28,6 +28,8 @@ switch ($dados['registro']) {
 
         // item e ingrediente_item
     case 2:
+        echo '<pre>';
+        var_dump($_POST['ingredientes']);
         $query = $conn->prepare('INSERT INTO item (descricao) VALUES (:descricao);');
         $query->execute([
             ':descricao' => $dados['descricao']
@@ -35,7 +37,7 @@ switch ($dados['registro']) {
         
         $item_id = pegaUltimoId($conn);
 
-        foreach(explode(',', $dados['ingredientes']) as $ingrediente){
+        foreach($dados['ingredientes'] as $ingrediente){
             $query = $conn->prepare('INSERT INTO ingrediente_item (ingrediente_id, item_id) VALUES (:ingrediente_id, :item_id);');
             
             $query->execute([
