@@ -41,26 +41,27 @@ $listedcategories=mysqli_num_rows($ret);
 $query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
 $totalnotes=mysqli_num_rows($query);
 ?>
-        <div class="col-lg-6 col-xl-2 mb-4"></div>
+        <!--<div class="col-lg-6 col-xl-2 mb-4"></div> -->
 
-                    <div class="col-lg-6 col-xl-4 mb-4">
+        <div class="col-lg-6 col-xl-4 mb-4">
                                 <div class="card bg-primary text-white h-100">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="me-3">
-                                                <div class="text-white-75 small">Adicionar Refeição</div>
+                                            <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
                                                 <div class="text-lg fw-bold"><?php //echo $listedcategories;?></div>
                                             </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            -->
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between small">
+                                <!--    <div class="card-footer d-flex align-items-center justify-content-between small">
                                         <a class="text-white stretched-link" href="manage-categories.php">Ver Detalhes</a>
                                    
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                     <div class="col-lg-6 col-xl-4 mb-4">
+                     <!--<div class="col-lg-6 col-xl-4 mb-4">
                                 <div class="card bg-success text-white h-100">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -79,7 +80,7 @@ $totalnotes=mysqli_num_rows($query);
                        
                  
                         </div>
-              
+                    -->
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -121,7 +122,7 @@ while($row=mysqli_fetch_array($query))
                                             <td> <?php echo htmlentities($row['creationDate']);?></td>
                                             <td>
                                             <a href="view-note.php?noteid=<?php echo $row['id']?>" class="btn btn-primary">Ver</a> 
-                                            <a href="manage-notes.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Excluir</a></td>
+                                            <a href="manage-notes.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Tem certeza que quer excluir?')" class="btn btn-danger">Excluir</a></td>
                                         </tr>
                                         <?php $cnt=$cnt+1; } ?>
                                     </tbody>
