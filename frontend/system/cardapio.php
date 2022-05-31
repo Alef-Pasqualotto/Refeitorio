@@ -38,8 +38,8 @@ $userid=$_SESSION["usuario_id"];
 $ret=mysqli_query($con,"select id from tblcategory where createdBy='$userid'");
 $listedcategories=mysqli_num_rows($ret);
 
-//$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
-//$totalnotes=mysqli_num_rows($query);
+$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
+$totalnotes=mysqli_num_rows($query);
 ?>
         <div class="col-lg-6 col-xl-2 mb-4"></div>
 
@@ -107,11 +107,8 @@ $listedcategories=mysqli_num_rows($ret);
                                     </tfoot>
                                     <tbody>
 <?php 
-
-$query = $conn->prepare("select * from usuario where usuario_id=:id");
-$query->execute([':id' => $id]);
-$usuario = $query->fetch();
-    
+$userid=$_SESSION["edmsid"];
+$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
