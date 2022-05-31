@@ -57,6 +57,7 @@ switch ($dados['registro']) {
             ':crn' => isset($dados['crn']) ? $dados['crn'] : null
         ]);
         header('location:..\frontend\system\login.php');
+        
         break;
 
         //cardapio e cardapio_item
