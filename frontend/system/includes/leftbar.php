@@ -16,7 +16,7 @@
                              <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="add-refeicao.php">Adicionar</a>
-                                    <a class="nav-link" href="manage-notes.php">Administrar</a>
+                                    <a class="nav-link" href="adm-refeicao.php">Administrar</a>
                                 </nav>
                             </div>
                                <a class="nav-link" href="logout.php">
