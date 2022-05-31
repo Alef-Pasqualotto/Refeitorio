@@ -2,9 +2,6 @@
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(isset($_POST['login']))
   {
-    echo '<pre>';
-    var_dump($_POST);
-
     $email = $_POST['email'];
     $password = $_POST['password'];
 

@@ -27,16 +27,16 @@
                     </div>
 <?php
 $id=intval($_SESSION["usuario_id"]);
-$query=mysqli_query($con,"select * from tblregistration where id='$id'");
+$query=mysqli_query($con,"select * from USUARIO where id='$id'");
 while($row=mysqli_fetch_array($query))
-{ $fullname=$row['firstName']." ".$row['lastName'];
+{ $nome=$row['nome'];
 }
 
     ?>
 
                     <div class="sb-sidenav-footer">
                         <div class="small">Conectado com a Conta:</div>
-                       <?php echo $fullname?>
+                       <?php echo $nome?>
                     </div>
                 </nav>
             </div>
