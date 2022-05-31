@@ -1,6 +1,6 @@
 <?php session_start();
 error_reporting(0);
-//include_once('includes/config.php');
+include_once('includes/config.php');
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(strlen( $_SESSION["usuario_id"])==0)
 {   
