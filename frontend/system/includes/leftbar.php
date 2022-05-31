@@ -25,18 +25,18 @@
                             </a>
                         </div>
                     </div>
-<?php
-$id=intval($_SESSION["usuario_id"]);
-$query=mysqli_query($con,"select * from USUARIO where id='$id'");
-while($row=mysqli_fetch_array($query))
-{ $nome=$row['nome'];
-}
-
-    ?>
 
                     <div class="sb-sidenav-footer">
                         <div class="small">Conectado com a Conta:</div>
-                       <?php echo $nome?>
+                        <?php
+                            $id=intval($_SESSION["usuario_id"]);
+                            $banco = new Banco;
+                            $conn = $banco->conectar();
+                            $query = $conn->prepare('SELECT nome FROM usuario WHERE usuario_id = :id');
+                            $query->execute([':id' => $id]);
+                            $nome = $query->fetch(PDO::FETCH_ASSOC);
+                            echo $nome['nome'];
+                            ?>
                     </div>
                 </nav>
             </div>
