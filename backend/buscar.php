@@ -14,11 +14,13 @@ $ingredientes = [];
 
 switch ($_POST['tabela']) {
     case 1: //selecionar por tipo ex:1 ,2 ,3  
-        $query = $conn->prepare(' SELECT item.descricao as nome_do_prato, CONCAT(CASE WHEN ingrediente_item.item_id = ingrediente_item.item_id THEN ingrediente.nome ELSE 0 END) as ingredientes, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn,SUM(CASE WHEN ingrediente_item.item_id = ingrediente_item.item_id THEN calorias ELSE 0 END) as soma_das_calorias
+        $query = $conn->prepare(' SELECT item.descricao as nome_do_prato, GROUP_CONCAT(ingrediente.nome) 
+        as ingredientes, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn,
+        SUM(CASE WHEN ingrediente_item.item_id = ingrediente_item.item_id THEN calorias ELSE 0 END) as soma_das_calorias 
         from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
         INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
         INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
-        WHERE cardapio.tipo = 3 GROUP BY nome_do_prato;');        
+        WHERE cardapio.tipo = 3 GROUP BY nome_do_prato');        
         $query->execute([
             ':tipo' => $dados['tipo']
         ]);
