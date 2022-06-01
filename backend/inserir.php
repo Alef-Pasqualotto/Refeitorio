@@ -19,31 +19,49 @@ try{
 switch ($dados['registro']) {
     // ingrediente
     case 1:
-        $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias) VALUES (:nome, :calorias);');
+        $query = $conn->prepare('SELECT * FROM ingrediente WHERE nome = :nome');
         $query->execute([
-            ':nome' => $dados['nome'],
-            ':calorias' => $dados['calorias']
+            ':nome' => $dados['nome']           
         ]);
+        // Se houver um ingrediente com esse nome no banco, ele não insere
+        if($query->fetch(PDO::FETCH_ASSOC) == null){
+            $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias) VALUES (:nome, :calorias);');
+            $query->execute([
+                ':nome' => $dados['nome'],
+                ':calorias' => $dados['calorias']
+            ]);
+        } else{
+            // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
+            die('Já existe um ingrediente com o mesmo nome cadastrado');
+        }
         break;
-
         // item e ingrediente_item
     case 2:
-        echo '<pre>';
-        var_dump($_POST['ingredientes']);
-        $query = $conn->prepare('INSERT INTO item (descricao) VALUES (:descricao);');
-        $query->execute([
-            ':descricao' => $dados['descricao']
-        ]);
-        
-        $item_id = pegaUltimoId($conn);
 
-        foreach($dados['ingredientes'] as $ingrediente){
-            $query = $conn->prepare('INSERT INTO ingrediente_item (ingrediente_id, item_id) VALUES (:ingrediente_id, :item_id);');
-            
+        $query = $conn->prepare('SELECT * FROM item WHERE descricao = :descricao');
+        $query->execute([
+            ':descricao' => $dados['descricao']           
+        ]);
+        // Se houver um item com esse nome no banco, ele não insere
+        if($query->fetch(PDO::FETCH_ASSOC) == null){
+            $query = $conn->prepare('INSERT INTO item (descricao) VALUES (:descricao);');
             $query->execute([
-                ':ingrediente_id' => $ingrediente,
-                ':item_id' => $item_id[0]
+                ':descricao' => $dados['descricao']
             ]);
+            
+            $item_id = pegaUltimoId($conn);
+
+            foreach($dados['ingredientes'] as $ingrediente){
+                $query = $conn->prepare('INSERT INTO ingrediente_item (ingrediente_id, item_id) VALUES (:ingrediente_id, :item_id);');
+                
+                $query->execute([
+                    ':ingrediente_id' => $ingrediente,
+                    ':item_id' => $item_id[0]
+                ]);
+        }
+        } else{
+            // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
+            die('Já existe um prato com o mesmo nome cadastrado');
         }
         break;
 
