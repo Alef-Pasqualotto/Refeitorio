@@ -37,16 +37,16 @@ switch ($_POST['tabela']) {
             ]); 
             var_dump($query->fetch());
             break;
-        case 3: //selecionar por nome ex: Cebola 
-            $query = $conn->prepare(' SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
+        case 3: //selecionar por nome. Ex: Cebola 
+            $query = $conn->prepare(" SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
             INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id  
             INNER JOIN item on cardapio_item.item_id = item.item_id 
             INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
             INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
-            WHERE ingrediente.nome % :nome ;');        
+            WHERE item.descricao LIKE '%:descricao%' ;");        
             $query->execute([
-                ':nome' => $dados['nome']
+                ':descricao' => $dados['descricao']
             ]);
             break;
     }
