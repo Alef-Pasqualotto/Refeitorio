@@ -67,7 +67,13 @@ switch ($dados['registro']) {
 
         //usuario
     case 3:
-        $query = $conn->prepare('INSERT INTO usuario (nome, senha, email, crn) VALUES (:nome, :senha, :email, :crn);');
+        $query = $conn->prepare('SELECT * FROM item WHERE email = :email');
+        $query->execute([
+            ':email' => $dados['email']           
+        ]);
+        // Se houver um item com esse nome no banco, ele não insere
+        if($query->fetch(PDO::FETCH_ASSOC) == null){
+            $query = $conn->prepare('INSERT INTO usuario (nome, senha, email, crn) VALUES (:nome, :senha, :email, :crn);');
         $query->execute([
             ':nome' => $dados['nome'],
             ':senha' => $dados['senha'],
@@ -76,6 +82,10 @@ switch ($dados['registro']) {
         ]);
         header('location:..\frontend\system\login.php');
         
+        } else{
+            // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
+            die('Já existe um usuário com o mesmo email cadastrado');
+        }
         break;
 
         //cardapio e cardapio_item
