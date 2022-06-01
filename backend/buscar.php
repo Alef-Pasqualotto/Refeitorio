@@ -39,7 +39,7 @@ switch ($_POST['tabela']) {
             $query->execute([
                 ':dt' => $dados['dt']                          
             ]);
-            var_dump($query->fetch());
+            var_dump($query->fetch(PDO::FETCH_ASSOC));
             break;
         case 3: //selecionar por nome. Ex: Cebola 
             $query = $conn->prepare(" SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
@@ -48,13 +48,14 @@ switch ($_POST['tabela']) {
             INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
             INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
-            WHERE item.descricao LIKE '%:descricao%' ;");        
+            WHERE item.descricao LIKE '%.:descricao.%' ;");        
             echo '<pre>';
             $query->execute([
                 ':descricao' => $dados['descricao']
             ]);
-            break;
             var_dump($query->fetch(PDO::FETCH_ASSOC));
+            break;
+            
             
     }
 ?>
