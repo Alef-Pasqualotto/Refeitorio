@@ -20,7 +20,7 @@ switch ($_POST['tabela']) {
         from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
         INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
         INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
-        WHERE cardapio.tipo = 3 GROUP BY nome_do_prato');        
+        WHERE cardapio.tipo = :tipo GROUP BY nome_do_prato');        
         $query->execute([
             ':tipo' => $dados['tipo']
         ]);
