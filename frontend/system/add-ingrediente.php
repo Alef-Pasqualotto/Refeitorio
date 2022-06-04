@@ -42,8 +42,8 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                             <form method="post" action="../../backend/inserir.php">
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Nome do Ingrediente:</div>
-                                    <input type="hidden" name="nome-ingrediente" value='1'>
-                                    <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o nome do ingrediente" class="form-control"></textarea>
+                                    <input type="hidden" name="registro" value='1'>
+                                    <div class="col-6"><input type="text" required name="nome" placeholder="Insira o nome do ingrediente" class="form-control"></textarea>
                                     </div>
                                 </div>
 
