@@ -57,6 +57,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php 
+                                        
+                                        
+                                        
+                                        
+                                        ?>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">
                                                 <button type="submit" name="submit" class="btn btn-primary btn-block">Criar Conta</button></div>
