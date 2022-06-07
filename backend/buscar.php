@@ -57,4 +57,5 @@ switch ($_POST['tabela']) {
         ]);
         var_dump($query->fetch(PDO::FETCH_ASSOC));
         break;
+        $a=$a;
 }
