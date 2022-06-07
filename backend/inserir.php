@@ -67,7 +67,8 @@ switch ($dados['registro']) {
 
         //usuario
     case 3:
-        $query = $conn->prepare('SELECT * FROM item WHERE email = :email');
+        if($dados['senha'] == $dados['confirmpassword']){
+        $query = $conn->prepare('SELECT * FROM usuario WHERE email = :email');
         $query->execute([
             ':email' => $dados['email']           
         ]);
@@ -87,7 +88,9 @@ switch ($dados['registro']) {
             die('Já existe um usuário com o mesmo email cadastrado');
         }
         break;
-
+    } else{
+        die('Escreve a senha direito pae');
+    }
         //cardapio e cardapio_item
     case 4:
         $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');

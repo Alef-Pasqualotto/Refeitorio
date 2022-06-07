@@ -34,3 +34,4 @@ function validaSenha(){
     }
     return true;
 }
+
