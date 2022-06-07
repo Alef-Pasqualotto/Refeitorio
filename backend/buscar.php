@@ -55,11 +55,7 @@ switch ($_POST['tabela']) {
             ]);
             var_dump($query->fetch(PDO::FETCH_ASSOC));
             break;
-<<<<<<< HEAD
-            
-=======
          
->>>>>>> e91c5566ab45cec136f6e42f2854cf96012ab2a8
             
     }
 ?>
