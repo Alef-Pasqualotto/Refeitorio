@@ -90,7 +90,7 @@ switch ($dados['registro']) {
         }
         break;
     } else{
-        die('Escreve a senha direito pae');
+        die("<script>alert('As senhas nâo coincidem');</script>");
     }
         //cardapio e cardapio_item
     case 4:
