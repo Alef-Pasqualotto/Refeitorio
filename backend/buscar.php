@@ -36,29 +36,25 @@ switch ($_POST['tabela']) {
             from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
             INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
-<<<<<<< HEAD
-            WHERE cardapio.dt = :dt GROUP BY nome_do_prato ;');        
-            echo '<pre>';
-            $query->execute([
-                ':dt' => $dados['dt']                          
-            ]);
-            var_dump($query->fetch(PDO::FETCH_ASSOC));
-            break;
-        case 3: //selecionar por nome. Ex: Cebola 
-            $query = $conn->prepare(" SELECT ingrediente.nome, ingrediente.calorias, item.descricao, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn from cardapio_item 
-            INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id  
-            INNER JOIN item on cardapio_item.item_id = item.item_id 
-            INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
-            INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id
-            INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id
-            WHERE item.descricao LIKE '%.:descricao.%' ;");        
-            echo '<pre>';
-            $query->execute([
-                ':descricao' => $dados['descricao']
-            ]);
-            var_dump($query->fetch(PDO::FETCH_ASSOC));
-            break;
-         
-            
-    }
-?>
+            WHERE cardapio.dt = :dt GROUP BY nome_do_prato ;');
+        echo '<pre>';
+        $query->execute([
+            ':dt' => $dados['dt']
+        ]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 3: //selecionar por nome. Ex: Cebola 
+        $query = $conn->prepare(" SELECT item.descricao as nome_do_prato, GROUP_CONCAT(ingrediente.nome) 
+            as ingredientes, cardapio.dt, cardapio.tipo, usuario.nome, usuario.crn,
+            SUM(CASE WHEN ingrediente_item.item_id = ingrediente_item.item_id THEN calorias ELSE 0 END) as soma_das_calorias 
+            from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
+            INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
+            INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
+            WHERE item.descricao LIKE '%" . $dados['descricao'] . "%' ; ");
+        echo '<pre>';
+        $query->execute([
+            ':descricao' => $dados['descricao']
+        ]);
+        var_dump($query->fetch(PDO::FETCH_ASSOC));
+        break;
+}
