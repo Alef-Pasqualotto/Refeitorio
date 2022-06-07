@@ -67,7 +67,7 @@ switch ($dados['registro']) {
 
         //usuario
     case 3:
-        $query = $conn->prepare('SELECT * FROM item WHERE email = :email');
+        $query = $conn->prepare('SELECT * FROM usuario WHERE email = :email');
         $query->execute([
             ':email' => $dados['email']           
         ]);
