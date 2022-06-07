@@ -2,9 +2,6 @@
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if(isset($_POST['login']))
   {
-    echo '<pre>';
-    var_dump($_POST);
-
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -42,7 +39,7 @@ if(isset($_POST['login']))
         <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-        <title>e-Diary Management System</title>
+        <title>Cardápio RU</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>

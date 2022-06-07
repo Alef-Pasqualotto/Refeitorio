@@ -1,16 +1,20 @@
-<?php session_start();
-include_once('includes/config.php');
-if(strlen($_SESSION["edmsid"])==0)
+<?php 
+//não esta sendo utilizado
+
+
+session_start();
+include_once(__DIR__ . '..\..\..\backend\conecta.php');
+if(strlen($_SESSION["usuario_id"])==0)
 {   header('location:logout.php');
 } else {
 
 // For deleting    
 if($_GET['del']){
 $nid=$_GET['id'];
-$userid=$_SESSION["edmsid"];
+$userid=$_SESSION["usuario_id"];
 mysqli_query($con,"delete from tblnotes where id ='$nid' and  createdBy='$userid'");
 mysqli_query($con,"delete from tblnoteshistory where noteId ='$nid' and  userId='$userid'");
-echo "<script>alert('Note Deleted');</script>";
+echo "<script>alert('Refeição deletada');</script>";
 echo "<script>window.location.href='manage-notes.php'</script>";
           }
 ?>
@@ -22,7 +26,7 @@ echo "<script>window.location.href='manage-notes.php'</script>";
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>e-Diary Management System</title>
+        <title>Cardápio RU</title>
           <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -34,41 +38,50 @@ echo "<script>window.location.href='manage-notes.php'</script>";
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Manage Notes</h1>
+                        <h1 class="mt-4">Administrar Refeição</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Manage Notes</li>
+                            <li class="breadcrumb-item"><a href="index.html">Cardápio</a></li>
+                            <li class="breadcrumb-item active">Administrar Refeição</li>
                         </ol>
+                        <hr />
+                        <div class="row">
+<?php
+$userid=$_SESSION["usuario_id"];
+$ret=mysqli_query($con,"select id from tblcategory where createdBy='$userid'");
+$listedcategories=mysqli_num_rows($ret);
+
+$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
+$totalnotes=mysqli_num_rows($query);
+?>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                               Notes Details
+                               Cardápio Semanal
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Note Title</th>
-                                            <th>Category</th>
-                                            <th>Creation date</th>
-                                            <th>Action</th>
+                                            <th>Refeição</th>
+                                            <th>Categoria</th>
+                                            <th>Data</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>#</th>
-                        
-                                 <th>Note Title</th>
-                                             <th>Category</th>
-                                            <th>Creation date</th>
-                                            <th>Action</th>
+                                            <th>#</th>
+                                            <th>Refeição</th>
+                                            <th>Categoria</th>
+                                            <th>Data</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 <?php 
 $userid=$_SESSION["edmsid"];
-$query=mysqli_query($con,"select * from tblnotes where createdBy='$userid'");
+$query=mysqli_query($con,"select * from item where createdBy='$userid'");
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
@@ -80,8 +93,8 @@ while($row=mysqli_fetch_array($query))
                                             <td><?php echo htmlentities($row['noteCategory']);?></td>
                                             <td> <?php echo htmlentities($row['creationDate']);?></td>
                                             <td>
-                                            <a href="view-note.php?noteid=<?php echo $row['id']?>" class="btn btn-primary">View</a> 
-                                            <a href="manage-notes.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                                            <a href="view-note.php?noteid=<?php echo $row['id']?>" class="btn btn-primary">Editar</a> 
+                                            <a href="manage-notes.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Tem certeza que deseja excluir?')" class="btn btn-danger">Excluir</a></td>
                                         </tr>
                                         <?php $cnt=$cnt+1; } ?>
                                        
@@ -91,7 +104,7 @@ while($row=mysqli_fetch_array($query))
                         </div>
                     </div>
                 </main>
-<?php include_once('includes/footer.php');?>
+
                 </footer>
             </div>
         </div>
