@@ -46,6 +46,18 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o nome do prato" class="form-control"></textarea>
                                     </div>
                                 </div>
+
+                                <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">Data:</div>
+                                    <div class="col-6"><input type="date" required name="data" placeholder="Insira a data" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">Nome do Nutricionista:</div>
+                                    <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o nome do nutricionista" class="form-control"></textarea>
+                                    </div>
+                                </div>
 <!-- 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Tipo:</div>

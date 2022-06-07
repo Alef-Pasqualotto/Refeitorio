@@ -49,8 +49,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Quantidade de Calorias:</div>
-                                    <input type="hidden" name="calorias" value='2'>
-                                    <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o valor calórico" class="form-control"></textarea>
+                                    <div class="col-6"><input type="number" required name="calorias" placeholder="Insira o valor calórico" class="form-control"></textarea>
                                     </div>
                                 </div>
 
