@@ -94,25 +94,36 @@ switch ($dados['registro']) {
     }
         //cardapio e cardapio_item
     case 4:
-        $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');
+        $query = $conn->prepare('SELECT * FROM cardapio WHERE dt = :dt AND tipo = :tipo AND nutricionista_id = :nutricionista_id');
         $query->execute([
             ':dt' => $dados['data'],
             ':tipo' => $dados['tipo'],
-            ':nutricionista' => $dados['nutricionista']
+            ':nutricionista_id' => $dados['nutricionista']
         ]);
-        
-        $cardapio_id = pegaUltimoId($conn);
-
-        foreach(explode(',', $dados['itens']) as $item){
-            $query = $conn->prepare('INSERT INTO cardapio_item (cardapio_id, item_id) VALUES (:cardapio_id, :item_id);');            
-            
+        // Se houver um cardapio com estes dados no banco, ele não insere
+        if($query->fetch(PDO::FETCH_ASSOC) == null){            
+            $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');
             $query->execute([
-                ':cardapio_id' => $cardapio_id[0],
-                ':item_id' => $item[0]
+                ':dt' => $dados['data'],
+                ':tipo' => $dados['tipo'],
+                ':nutricionista' => $dados['nutricionista']
             ]);
+            
+            $cardapio_id = pegaUltimoId($conn);
+
+            foreach(explode(',', $dados['itens']) as $item){
+                $query = $conn->prepare('INSERT INTO cardapio_item (cardapio_id, item_id) VALUES (:cardapio_id, :item_id);');            
+                
+                $query->execute([
+                    ':cardapio_id' => $cardapio_id[0],
+                    ':item_id' => $item[0]
+                ]);
+            }
+            header('location:..\frontend\system\index.php');
+            break;
+        } else{
+            die('Já existe um cardápio com os referidos dados.');
         }
-        header('location:..\frontend\system\index.php');
-        break;
 }
 
 function pegaUltimoId($conexao){
