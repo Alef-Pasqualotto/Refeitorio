@@ -72,7 +72,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
+                                            <tr>                                                
                                                 <th>Nº</th>
                                                 <th>Refeição</th>
                                                 <th>Tipo</th>

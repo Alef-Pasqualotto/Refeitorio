@@ -8,12 +8,17 @@
                                 Cardápio
                             </a>
 
+                            <?php
+                            $banco = new Banco;
+                            $conn = $banco->conectar();
+                            if($banco->autentica($_SESSION["usuario_id"])){
+                            echo ('
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Refeições
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="add-refeicao.php">Adicionar</a>                                    
                                 </nav>
@@ -28,7 +33,9 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="add-ingrediente.php">Adicionar</a>
                                 </nav>
-                            </div>
+                            </div>');
+                            }
+                            ?>
 
                                <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fa fa-sign-out"></i></div>
@@ -40,9 +47,7 @@
                     <div class="sb-sidenav-footer">
                         <div class="small">Conectado com a Conta:</div>
                         <?php
-                            $id=intval($_SESSION["usuario_id"]);
-                            $banco = new Banco;
-                            $conn = $banco->conectar();
+                            $id=intval($_SESSION["usuario_id"]);                            
                             $query = $conn->prepare('SELECT nome FROM usuario WHERE usuario_id = :id');
                             $query->execute([':id' => $id]);
                             $nome = $query->fetch(PDO::FETCH_ASSOC);
