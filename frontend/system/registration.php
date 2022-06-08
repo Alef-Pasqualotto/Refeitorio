@@ -57,6 +57,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php 
+                                        $banco = new Banco;
+                            $conn = $banco->conectar();
+                            if($banco->autentica($_SESSION["usuario_id"])){
+                            echo ('
+                                         <div class="form-floating mb-3">
+                                         <input class="form-control" id="inputcrn" type="number" name="crn"
+                                             placeholder="1,2,3" />
+                                         <label for="inputcrn">CRN</label>
+                                     </div>
+                                         ');
+                                            }
+                                            ?>
+
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">
                                                 <button type="submit" name="submit" class="btn btn-primary btn-block">Criar Conta</button></div>

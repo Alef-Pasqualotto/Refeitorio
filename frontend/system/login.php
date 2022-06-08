@@ -19,7 +19,7 @@ if(isset($_POST['login']))
     if($ret){        
         $_SESSION['usuario_id']=$ret['usuario_id'];
         $_SESSION['uemail']=$ret['email'];
-      echo "<script>window.location.href='cardapio.php'</script>";
+        echo "<script>window.location.href='cardapio.php'</script>";
     }
     else{
         echo "<script>alert('Não foi encontrado usuário com o email e senha informados');</script>";
@@ -70,7 +70,7 @@ if(isset($_POST['login']))
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="registration.html">Novo no site? Cadastre-se!</a></div>
+                                        <div class="small"><a href="registration.php">Novo no site? Cadastre-se!</a></div>
                                         <hr />
                                            <div class="small"><a href="index.php">Página Inicial</a></div>
                                     </div>
