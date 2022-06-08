@@ -7,12 +7,12 @@ $conn = $banco->conectar();
 // dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
 // 1 = ingrediente
 // 2 = item
-// 3 = cardapio
+// 3 = cardapi
 
 
 switch ($dados['registro']) {
     case 1:
-        $query = $conn->prepare(' UPDATE ingredientes SET nome = :nome, calorias = :calorias  WHERE ingrediente_id = :id ;');        
+        $query = $conn->prepare(' UPDATE ingrediente SET nome = :nome, calorias = :calorias  WHERE ingrediente_id = :id ;');        
         $query->execute([
             ':id' => $dados['ingrediente_id'],
             ':nome' => $dados['nome'],
@@ -20,14 +20,14 @@ switch ($dados['registro']) {
         ]);
         break;
         case 2:
-            $query = $conn->prepare('UPDATE itens SET descricao = :descricao WHERE item_id = :id;');        
+            $query = $conn->prepare('UPDATE item SET descricao = :descricao WHERE item_id = :id;');        
             $query->execute([
                 ':id' => $dados['item_id'],
                 ':descricao' => $dados['descricao']            
             ]);
             break;
         case 3:        
-            $query = $conn->prepare('UPDATE cardapios SET dt = :dt, tipo = :tipo, nutricionista_id = :nutricionista WHERE cardapio_id = :id;');        
+            $query = $conn->prepare('UPDATE cardapio SET dt = :dt, tipo = :tipo, nutricionista_id = :nutricionista WHERE cardapio_id = :id;');        
             $query->execute([
                 ':id' => $dados['cardapio_id'],
                 ':dt' => $dados['data'],
