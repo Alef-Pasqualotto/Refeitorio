@@ -29,7 +29,7 @@ switch ($dados['registro']) {
                 ':nome' => $dados['nome'],
                 ':calorias' => $dados['calorias']
             ]);
-            header('location:..\frontend\system\index.php');
+            header('location:..\frontend\system\ingrediente.php');
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
             die('Já existe um ingrediente com o mesmo nome cadastrado');
@@ -58,7 +58,7 @@ switch ($dados['registro']) {
                     ':ingrediente_id' => $ingrediente,
                     ':item_id' => $item_id[0]
                 ]);
-            header('location:..\frontend\system\index.php');
+            header('location:..\frontend\system\ingrediente.php');
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
