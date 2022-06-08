@@ -3,8 +3,7 @@ include_once('includes/config.php');
 if(strlen($_SESSION["edmsid"])==0)
 {   header('location:logout.php');
 } else {
-
-// For deleting    
+ 
 if($_GET['del']){
 $nid=$_GET['id'];
 $userid=$_SESSION["edmsid"];

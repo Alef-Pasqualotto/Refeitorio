@@ -1,7 +1,7 @@
 <?php session_start();
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
-    header('location:logout.php');
+    header('location:add-refeicao.php');
 }
 ?>
 
