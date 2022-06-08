@@ -150,9 +150,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="text" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                            <button id="salvar" class="btn btn-danger" type="button">Excluir</button>
-                                                                            <button id="alterar" class="btn btn-primary" type="button">Clonar</button>
+                                                                            <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                            <button id="excluir" class="btn btn-danger" type="button" action='excluir.php?id="<?php echo $item['id']; ?>"' method="get">Excluir</button>
+                                                                            <button id="clonar" class="btn btn-success" type="button">Clonar</button>
                                                                             <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
                                                                         </div>
                                                                     </div>

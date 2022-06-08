@@ -32,6 +32,6 @@ function validaSenha(){
         document.registration.confirmpassword.focus();
         return false;
     }
-    return true;
+    return true;    
 }
 
