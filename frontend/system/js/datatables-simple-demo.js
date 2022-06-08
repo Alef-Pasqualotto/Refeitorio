@@ -6,4 +6,9 @@ window.addEventListener('DOMContentLoaded', event => {
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
     }
+
+    data = document.getElementById("data-pesquisa");    
+    if(data.value != null){
+        data.addEventListener("focusout", ()=>{window.location.href = `../../../refeitorio/frontend/system/cardapio.php?data=${data.value}`});
+    }
 });

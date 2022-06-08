@@ -1,7 +1,7 @@
 <?php session_start();
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
-    header('location:logout.php');
+    header('location:add-refeicao.php');
 }
 ?>
 
@@ -49,18 +49,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o nome do prato" class="form-control"></textarea>
                                     </div>
                                 </div>
-<!-- 
-                                <div class="row" style="margin-top:1%;">
-                                    <div class="col-2">Tipo:</div>
-                                    <div class="col-6">
-                                        <select name="tipoprato" required id="tipoprato" class="form-control">
-                                            <option value="" disabled selected hidden>Insira o tipo da refeição</option>
-                                            <option value="cafe">Café</option>
-                                            <option value="almoco">Almoço</option>
-                                            <option value="janta">Janta</option>
-                                        </select>
-                                    </div>
-                                </div> -->
+
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Ingredientes:</div>

@@ -1,5 +1,4 @@
 <?php 
-//não esta sendo utilizado
 
 
 session_start();
@@ -8,7 +7,6 @@ if(strlen($_SESSION["usuario_id"])==0)
 {   header('location:logout.php');
 } else {
 
-// For deleting    
 if($_GET['del']){
 $nid=$_GET['id'];
 $userid=$_SESSION["usuario_id"];

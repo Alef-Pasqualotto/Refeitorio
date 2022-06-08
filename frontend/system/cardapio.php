@@ -4,6 +4,14 @@ include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:logout.php');
 } else {
+    $banco = new Banco;
+    if (!empty($_GET['data'])) {
+        $data = $_GET['data'];
+        $pesquisa = 2;
+    } else {
+        $pesquisa = 1;
+    }
+
 ?>
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -33,65 +41,34 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <h1 class="mt-4">Cardápio Semanal</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Refeições</li>
-                        </ol>                        
+                        </ol>
                         <hr />
-                        <div class="card bg-primary text-white h-100">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-3">
-                                            <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <div class="row">
-                                                      <!--<div class="col-lg-6 col-xl-2 mb-4"></div> 
-
-        <div class="col-lg-6 col-xl-4 mb-4">
-                                <div class="card bg-primary text-white h-100">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-3">
+                        <?php
+                        if ($banco->autentica($_SESSION["usuario_id"])) {
+                            echo '<div class="card bg-primary text-white d-grid gap-2 col-6 mx-left">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-3">
                                             <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
-                                                <div class="text-lg fw-bold"><?php //echo $listedcategories;
-                                                                                ?></div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                            
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between small">
-                                        <a class="text-white stretched-link" href="manage-categories.php">Ver Detalhes</a>
-                                   
-                                    </div>
                                 </div>
-                            </div>
-                     <div class="col-lg-6 col-xl-4 mb-4">
-                                <div class="card bg-success text-white h-100">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-3">
-                                                <div class="text-white-75 small">Total de Refeições</div>                                                
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square feather-xl text-white-50"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between small">
-                                        <a class="text-white stretched-link" href="manage-notes.php">Ver Detalhes</a>
-                       
-                                    </div>
-                                </div>
-                            </div>
-                       
-                 
-                        </div>
-                    -->
+                            </div><br>';
+                        }
+                        ?>
+
+                        <div class="row">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
                                     Cardápio Semanal
                                 </div>
                                 <div class="card-body">
+                                    <div class="col-2">Pesquisa por semana:</div>
+                                    <div class="col-6">
+                                        <input id="data-pesquisa" type="date" required name="data" <?php echo empty($data) ? '' : 'value="' . $data . '"' ?> placeholder="Pesquisa por semana" class="form-control">
+                                    </div>
+                                    <a href="../../../refeitorio/frontend/system/cardapio.php">Limpar</a>
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
@@ -103,7 +80,12 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <th>Calorias</th>
                                                 <th>Nutricionista</th>
                                                 <th>Crn</th>
-                                                <th>Ação</th>
+                                                <?php
+                                                if ($banco->autentica($_SESSION["usuario_id"])) {
+                                                    echo '<th>Ação</th>';
+                                                }
+                                                ?>
+
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -116,11 +98,15 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <th>Calorias</th>
                                                 <th>Nutricionista</th>
                                                 <th>Crn</th>
-                                                <th>Ação</th>
+                                                <?php
+                                                if ($banco->autentica($_SESSION["usuario_id"])) {
+                                                    echo '<th>Ação</th>';
+                                                }
+                                                ?>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <?php                                     
+                                            <?php
                                             $itens = include_once(__DIR__ . '..\..\..\backend\buscar.php');
                                             for ($i = 0; $i < count($itens); $i++) {
                                             ?>
@@ -129,14 +115,51 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td><?php echo htmlentities($i + 1); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome_do_prato"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["tipo"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["dt"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["nome"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["crn"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["dt"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["nome"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["crn"]); ?></td>
                                                     <td>
-                                                        <a href="view-note.php?noteid=<?php echo $row['id'] ?>" class="btn btn-primary">Ver</a>
-                                                        <!--<a href="manage-notes.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Tem certeza que quer excluir?')" class="btn btn-danger">Excluir</a></td>-->
+                                                        <?php
+                                                        if ($banco->autentica($_SESSION["usuario_id"])) {
+                                                            echo '<button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Ver
+                                                </button>';
+                                                        }
+                                                        ?>                                                       
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Refeição</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <input type="hidden" id="id" />
+                                                                        <div class="mb-3">
+                                                                            <label for="nome" class="form-label">Nome da Refeição</label>
+                                                                            <input type="text" class="form-control" id="nome">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Data</label>
+                                                                            <input type="date" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Nutricionista</label>
+                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                            <button id="salvar" class="btn btn-danger" type="button">Excluir</button>
+                                                                            <button id="alterar" class="btn btn-primary" type="button">Clonar</button>
+                                                                            <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php echo $row['id'] ?>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>

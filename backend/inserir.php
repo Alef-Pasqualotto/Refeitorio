@@ -1,5 +1,4 @@
 <?php
-//header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 include_once('conecta.php');
 $dados = $_POST;
 $banco = new Banco;
@@ -30,6 +29,7 @@ switch ($dados['registro']) {
                 ':nome' => $dados['nome'],
                 ':calorias' => $dados['calorias']
             ]);
+            header('location:..\frontend\system\index.php');
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
             die('Já existe um ingrediente com o mesmo nome cadastrado');
@@ -58,6 +58,7 @@ switch ($dados['registro']) {
                     ':ingrediente_id' => $ingrediente,
                     ':item_id' => $item_id[0]
                 ]);
+            header('location:..\frontend\system\index.php');
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
@@ -89,26 +90,39 @@ switch ($dados['registro']) {
         }
         break;
     } else{
-        die('Escreve a senha direito pae');
+        die("<script>alert('As senhas nâo coincidem');</script>");
     }
         //cardapio e cardapio_item
     case 4:
-        $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');
+        $query = $conn->prepare('SELECT * FROM cardapio WHERE dt = :dt AND tipo = :tipo AND nutricionista_id = :nutricionista_id');
         $query->execute([
             ':dt' => $dados['data'],
             ':tipo' => $dados['tipo'],
-            ':nutricionista' => $dados['nutricionista']
+            ':nutricionista_id' => $dados['nutricionista']
         ]);
-        
-        $cardapio_id = pegaUltimoId($conn);
-
-        foreach(explode(',', $dados['itens']) as $item){
-            $query = $conn->prepare('INSERT INTO cardapio_item (cardapio_id, item_id) VALUES (:cardapio_id, :item_id);');            
-            
+        // Se houver um cardapio com estes dados no banco, ele não insere
+        if($query->fetch(PDO::FETCH_ASSOC) == null){            
+            $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');
             $query->execute([
-                ':cardapio_id' => $cardapio_id[0],
-                ':item_id' => $item[0]
+                ':dt' => $dados['data'],
+                ':tipo' => $dados['tipo'],
+                ':nutricionista' => $dados['nutricionista']
             ]);
+            
+            $cardapio_id = pegaUltimoId($conn);
+
+            foreach($dados['itens'] as $item){
+                $query = $conn->prepare('INSERT INTO cardapio_item (item_id, cardapio_id) VALUES (:item_id, :cardapio_id);');
+                
+                $query->execute([
+                    ':item_id' => $item,
+                    ':cardapio_id' => $cardapio_id[0]
+                ]);
+            header('location:..\frontend\system\add-cardapio.php');
+        }
+        } else{
+            // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
+            die('Já existe um cardapio com as mesmas informações cadastradas');
         }
         break;
 }

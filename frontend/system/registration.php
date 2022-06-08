@@ -13,6 +13,7 @@
     <title>Cardápio RU | Cadastro </title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <?php session_start(); ?>
 </head>
 
 <body class="bg-primary">
@@ -32,7 +33,7 @@
                                         <div class="form-floating mb-3">
                                             <input type="hidden" value="3" name="registro" id="registro">
                                             <input class="form-control" id="nome" type="text" name="nome"
-                                                placeholder="Insira seu Primeiro Nome" required />
+                                                placeholder="Insira Nome" required />
                                             <label for="nome">Nome</label>
                                         </div>
                                         <div class="form-floating mb-3">
@@ -57,6 +58,26 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php
+                                        $sessao = isset($_SESSION['usuario_id']);
+                                        if($sessao == false)
+                                        {
+                                        }else{
+                                        include_once(__DIR__ . '..\..\..\backend\conecta.php');
+                                        $banco = new Banco;
+                            $conn = $banco->conectar();
+                            if($banco->autentica($_SESSION["usuario_id"])){
+        
+                                echo ('
+                                         <div class="form-floating mb-3">
+                                         <input class="form-control" id="inputcrn" type="number" name="crn"
+                                             placeholder="1,2,3" />
+                                         <label for="inputcrn">CRN</label>
+                                     </div>
+                                         ');
+                                            }}
+                                            ?>
+
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">
                                                 <button type="submit" name="submit" class="btn btn-primary btn-block">Criar Conta</button></div>
@@ -64,9 +85,15 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div>
-                                    <hr />
-                                    <div class="small"><a href="index.php">Página Inicial</a></div>
+                                <?php
+                                $sessao = isset($_SESSION['usuario_id']);
+                                        if($sessao == false)
+                                        { echo '<div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div><hr />';
+                                        }else{ 
+                                }
+                                ?>    
+              
+                                    <div class="small"><a href="logout.php">Página Inicial</a></div>
                                 </div>
                             </div>
                         </div>
