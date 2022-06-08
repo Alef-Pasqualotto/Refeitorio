@@ -25,6 +25,6 @@ try{
             ':tipo' => $registro['tipo'], 
             ':nutricionista' => $registro['nutricionista_id'],
             ':dt' => $_POST['data-nova']
-        ]);
+        ]);        
     }
 ?>
