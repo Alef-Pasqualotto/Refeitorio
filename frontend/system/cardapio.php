@@ -5,10 +5,10 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:logout.php');
 } else {
     $banco = new Banco;
-    if(!empty($_GET['data'])){
+    if (!empty($_GET['data'])) {
         $data = $_GET['data'];
         $pesquisa = 2;
-    } else{
+    } else {
         $pesquisa = 1;
     }
 
@@ -64,9 +64,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     Cardápio Semanal
                                 </div>
                                 <div class="card-body">
-                                <div class="col-2">Pesquisa por semana:</div>
-                                    <div class="col-6">                                        
-                                        <input id="data-pesquisa" type="date" required name="data" <?php echo empty($data)? '' : 'value="'. $data . '"'?> placeholder="Pesquisa por semana" class="form-control">
+                                    <div class="col-2">Pesquisa por semana:</div>
+                                    <div class="col-6">
+                                        <input id="data-pesquisa" type="date" required name="data" <?php echo empty($data) ? '' : 'value="' . $data . '"' ?> placeholder="Pesquisa por semana" class="form-control">
                                     </div>
                                     <a href="../../../refeitorio/frontend/system/cardapio.php">Limpar</a>
                                     <table id="datatablesSimple">
@@ -80,7 +80,12 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <th>Calorias</th>
                                                 <th>Nutricionista</th>
                                                 <th>Crn</th>
-                                                <th>Ação</th>
+                                                <?php
+                                                if ($banco->autentica($_SESSION["usuario_id"])) {
+                                                    echo '<th>Ação</th>';
+                                                }
+                                                ?>
+
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -93,7 +98,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <th>Calorias</th>
                                                 <th>Nutricionista</th>
                                                 <th>Crn</th>
-                                                <th>Ação</th>
+                                                <?php
+                                                if ($banco->autentica($_SESSION["usuario_id"])) {
+                                                    echo '<th>Ação</th>';
+                                                }
+                                                ?>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -112,9 +121,13 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td><?php echo htmlentities($itens[$i]["nome"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["crn"]); ?></td>
                                                     <td>
-                                                        <button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                            Ver
-                                                        </button>
+                                                        <?php
+                                                        if ($banco->autentica($_SESSION["usuario_id"])) {
+                                                            echo '<button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Ver
+                                                </button>';
+                                                        }
+                                                        ?>                                                       
                                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
