@@ -117,27 +117,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="text" class="form-control" id="nome">
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="tipo" class="form-label">Tipo</label>
-                                                                            <input type="text" class="form-control" id="sobrenome">
-                                                                        </div>
-                                                                        <div class="mb-3">
                                                                             <label for="dtnasc" class="form-label">Data</label>
                                                                             <input type="date" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Ingredientes</label>
-                                                                            <input type="text" class="form-control" id="dtnasc">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Calorias</label>
-                                                                            <input type="text" class="form-control" id="dtnasc">
-                                                                        </div>
-                                                                        <div class="mb-3">
                                                                             <label for="dtnasc" class="form-label">Nutricionista</label>
-                                                                            <input type="text" class="form-control" id="dtnasc">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Crn</label>
                                                                             <input type="text" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="modal-footer">
