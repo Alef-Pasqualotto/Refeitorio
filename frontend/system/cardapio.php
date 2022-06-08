@@ -5,6 +5,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:logout.php');
 } else {
     $banco = new Banco;
+    $data = $_GET['data'];
 ?>
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -57,6 +58,10 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     Cardápio Semanal
                                 </div>
                                 <div class="card-body">
+                                <div class="col-2">Data pesquisada:</div>
+                                    <div class="col-6">
+                                        <input id="data-pesquisa" type="date" required name="data" placeholder="Insira a data" class="form-control">
+                                    </div>
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
@@ -94,11 +99,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td><?php echo htmlentities($i + 1); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome_do_prato"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["tipo"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["dt"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["nome"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["crn"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["dt"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["nome"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["crn"]); ?></td>
                                                     <td>
                                                         <button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                             Ver
