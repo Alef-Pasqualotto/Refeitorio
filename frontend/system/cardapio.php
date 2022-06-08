@@ -38,7 +38,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <hr />
                         <?php
                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                            echo '<div class="card bg-primary text-white h-100">
+                            echo '<div class="card bg-primary text-white d-grid gap-2 col-6 mx-left">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
@@ -125,8 +125,8 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="text" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                                                            <button id="salvar" class="btn btn-primary" type="button">Excluir</button>
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                            <button id="salvar" class="btn btn-danger" type="button">Excluir</button>
                                                                             <button id="alterar" class="btn btn-primary" type="button">Clonar</button>
                                                                             <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
                                                                         </div>
