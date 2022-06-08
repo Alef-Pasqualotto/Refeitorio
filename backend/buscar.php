@@ -12,7 +12,7 @@ $ingredientes = [];
 // 3 = usuario
 // 4 = cardapio
 $_POST['tabela'] = 2;
-$dados['dt'] = '1994-05-12';
+$dados['dt'] = $data;
 
 switch ($_POST['tabela']) {
     case 1: //selecionar por tipo ex:1 ,2 ,3  

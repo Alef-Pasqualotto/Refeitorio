@@ -5,6 +5,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:logout.php');
 } else {
     $banco = new Banco;
+    $data = $_GET['data'];
 ?>
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -35,6 +36,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Refeições</li>
                         </ol>
+
                         <hr/>
                         <?php
                             if($banco->autentica($_SESSION["usuario_id"])){
@@ -57,6 +59,10 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     Cardápio Semanal
                                 </div>
                                 <div class="card-body">
+                                <div class="col-2">Data pesquisada:</div>
+                                    <div class="col-6">
+                                        <input id="data-pesquisa" type="date" required name="data" placeholder="Insira a data" class="form-control">
+                                    </div>
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
@@ -94,11 +100,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td><?php echo htmlentities($i + 1); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome_do_prato"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["tipo"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["dt"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["nome"]); ?></td>
-                                                    <td> <?php echo htmlentities($itens[$i]["crn"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["dt"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["nome"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["crn"]); ?></td>
                                                     <td>
                                                         <a href="view-note.php?noteid=<?php echo $row['id'] ?>" class="btn btn-primary">Ver</a>
                                                         <!--<a href="manage-notes.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Tem certeza que quer excluir?')" class="btn btn-danger">Excluir</a></td>-->
