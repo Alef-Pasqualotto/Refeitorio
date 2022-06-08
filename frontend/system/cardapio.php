@@ -5,7 +5,13 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:logout.php');
 } else {
     $banco = new Banco;
-    $data = $_GET['data'];
+    if(!empty($_GET['data'])){
+        $data = $_GET['data'];
+        $pesquisa = 2;
+    } else{
+        $pesquisa = 1;
+    }
+
 ?>
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -58,10 +64,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     Cardápio Semanal
                                 </div>
                                 <div class="card-body">
-                                <div class="col-2">Data pesquisada:</div>
-                                    <div class="col-6">
-                                        <input id="data-pesquisa" type="date" required name="data" placeholder="Insira a data" class="form-control">
+                                <div class="col-2">Pesquisa por semana:</div>
+                                    <div class="col-6">                                        
+                                        <input id="data-pesquisa" type="date" required name="data" <?php echo empty($data)? '' : 'value="'. $data . '"'?> placeholder="Pesquisa por semana" class="form-control">
                                     </div>
+                                    <a href="../../../refeitorio/frontend/system/cardapio.php">Limpar</a>
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
