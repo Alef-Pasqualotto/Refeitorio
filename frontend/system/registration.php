@@ -33,7 +33,7 @@
                                         <div class="form-floating mb-3">
                                             <input type="hidden" value="3" name="registro" id="registro">
                                             <input class="form-control" id="nome" type="text" name="nome"
-                                                placeholder="Insira seu Primeiro Nome" required />
+                                                placeholder="Insira Nome" required />
                                             <label for="nome">Nome</label>
                                         </div>
                                         <div class="form-floating mb-3">
@@ -85,8 +85,14 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div>
-                                    <hr />
+                                <?php
+                                $sessao = isset($_SESSION['usuario_id']);
+                                        if($sessao == false)
+                                        { echo '<div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div><hr />';
+                                        }else{ 
+                                }
+                                ?>    
+              
                                     <div class="small"><a href="logout.php">Página Inicial</a></div>
                                 </div>
                             </div>

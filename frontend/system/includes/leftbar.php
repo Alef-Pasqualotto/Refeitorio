@@ -4,7 +4,7 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Sistema</div>
                             <a class="nav-link" href="cardapio.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Cardápio
                             </a>
 
@@ -29,7 +29,10 @@
                             <a class="nav-link" href="registration.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Registro de Usuário
-                            </a>');
+                            </a>
+                            
+                            
+                            ');
                             }
                             ?>
 

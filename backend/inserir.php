@@ -111,19 +111,20 @@ switch ($dados['registro']) {
             
             $cardapio_id = pegaUltimoId($conn);
 
-            foreach(explode(',', $dados['itens']) as $item){
-                $query = $conn->prepare('INSERT INTO cardapio_item (cardapio_id, item_id) VALUES (:cardapio_id, :item_id);');            
+            foreach($dados['itens'] as $item){
+                $query = $conn->prepare('INSERT INTO cardapio_item (item_id, cardapio_id) VALUES (:item_id, :cardapio_id);');
                 
                 $query->execute([
-                    ':cardapio_id' => $cardapio_id[0],
-                    ':item_id' => $item[0]
+                    ':item_id' => $item,
+                    ':cardapio_id' => $cardapio_id[0]
                 ]);
-            }
-            header('location:..\frontend\system\index.php');
-            break;
-        } else{
-            die('Já existe um cardápio com os referidos dados.');
+            header('location:..\frontend\system\add-cardapio.php');
         }
+        } else{
+            // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
+            die('Já existe um prato com o mesmo nome cadastrado');
+        }
+        break;
 }
 
 function pegaUltimoId($conexao){

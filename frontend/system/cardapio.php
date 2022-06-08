@@ -146,7 +146,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!--<a href="manage-notes.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Tem certeza que quer excluir?')" class="btn btn-danger">Excluir</a></td>-->
+                                                        <?php echo $row['id'] ?>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
