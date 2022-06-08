@@ -35,10 +35,10 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Refeições</li>
                         </ol>
-                        <hr/>
+                        <hr />
                         <?php
-                            if($banco->autentica($_SESSION["usuario_id"])){
-                                echo '<div class="card bg-primary text-white h-100">
+                        if ($banco->autentica($_SESSION["usuario_id"])) {
+                            echo '<div class="card bg-primary text-white h-100">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
@@ -46,9 +46,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>';
-                            }
-                        ?>                       
+                            </div><br>';
+                        }
+                        ?>
 
                         <div class="row">
                             <div class="card mb-4">
@@ -72,7 +72,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>                                                
+                                            <tr>
                                                 <th>Nº</th>
                                                 <th>Refeição</th>
                                                 <th>Tipo</th>
@@ -100,7 +100,56 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td> <?php echo htmlentities($itens[$i]["nome"]); ?></td>
                                                     <td> <?php echo htmlentities($itens[$i]["crn"]); ?></td>
                                                     <td>
-                                                        <a href="view-note.php?noteid=<?php echo $row['id'] ?>" class="btn btn-primary">Ver</a>
+                                                        <button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Ver
+                                                        </button>
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Refeição</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <input type="hidden" id="id" />
+                                                                        <div class="mb-3">
+                                                                            <label for="nome" class="form-label">Nome da Refeição</label>
+                                                                            <input type="text" class="form-control" id="nome">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="tipo" class="form-label">Tipo</label>
+                                                                            <input type="text" class="form-control" id="sobrenome">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Data</label>
+                                                                            <input type="date" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Ingredientes</label>
+                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Calorias</label>
+                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Nutricionista</label>
+                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="dtnasc" class="form-label">Crn</label>
+                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                                                            <button id="salvar" class="btn btn-primary" type="button">Excluir</button>
+                                                                            <button id="alterar" class="btn btn-primary" type="button">Clonar</button>
+                                                                            <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <!--<a href="manage-notes.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Tem certeza que quer excluir?')" class="btn btn-danger">Excluir</a></td>-->
                                                 </tr>
                                             <?php } ?>
