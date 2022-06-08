@@ -26,7 +26,7 @@ switch ($pesquisa) {
             from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
             INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
-            GROUP BY nome_do_prato ;');        
+            GROUP BY dt, nome_do_prato, tipo ;');        
         return $query->fetchAll(PDO::FETCH_ASSOC);
         break;
 
@@ -38,7 +38,7 @@ switch ($pesquisa) {
             from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
             INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
-            WHERE week(dt) = week(:dt) GROUP BY nome_do_prato ;');
+            WHERE week(dt) = week(:dt) GROUP BY dt, nome_do_prato, tipo ;');
         echo '<pre>';
         $query->execute([
             ':dt' => $data

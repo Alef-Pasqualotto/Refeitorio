@@ -122,7 +122,7 @@ switch ($dados['registro']) {
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
-            die('Já existe um prato com o mesmo nome cadastrado');
+            die('Já existe um cardapio com as mesmas informações cadastradas');
         }
         break;
 }
