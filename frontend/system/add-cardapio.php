@@ -43,7 +43,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                     <div class="card mb-4">
                         <div class="card-body">
                             <form method="post" action="../../backend/inserir.php">
-
+                            <input type="hidden" name="registro" value='4'>
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Data:</div>
                                     <div class="col-6"><input type="date" required name="data" placeholder="Insira a data" class="form-control"></textarea>
@@ -52,19 +52,26 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">ID do Nutricionista:</div>
-                                    <div class="col-6"><input type="number" required name="nutricionistaId" placeholder="Insira o ID do nutricionista" class="form-control"></textarea>
+                                    <div class="col-6"><input type="number" required name="nutricionista" id="nutricionista" placeholder="Insira o ID do nutricionista" class="form-control"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Tipo:</div>
                                     <div class="col-6">
-                                        <select name="tipocardapio" required id="tipocardapio" class="form-control">
+                                        <select name="tipo" required id="tipo" class="form-control">
                                             <option value="" disabled selected hidden>Insira o tipo do cardápio</option>
-                                            <option value="cafe">Café</option>
-                                            <option value="almoco">Almoço</option>
-                                            <option value="janta">Janta</option>
+                                            <option value="1">Café</option>
+                                            <option value="2">Almoço</option>
+                                            <option value="3">Janta</option>
                                         </select>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">Itens:</div>
+                                    <div class="col-6">
+                                        <?php include_once('includes/itens.php'); ?>
                                     </div>
                                 </div>
 
