@@ -14,26 +14,17 @@ try{
     INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
     WHERE cardapio.dt = :dt and tipo = :tipo
     GROUP BY dt'); */
-    $query = $conn->prepare('SELECT * from carpadio where dt = :dt');
-    echo '<pre>';
+    $query = $conn->prepare('SELECT * from cardapio where dt = :dt');    
     $query->execute([
-    ':dt' => $dados['dt']
-    ]);
-    $query->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($query->fetchAll(PDO::FETCH_ASSOC));
-
-    foreach ( $query->fetchAll(PDO::FETCH_ASSOC) as $registro){
+    ':dt' => $dados['data-antiga']
+    ]); 
+    foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $registro){
         $query = $conn->prepare('INSERT INTO cardapio (tipo, dt, nutricionista_id) VALUES (:tipo, :dt, :nutricionista);');
                 
         $query->execute([
             ':tipo' => $registro['tipo'], 
             ':nutricionista' => $registro['nutricionista_id'],
-            ':dt' => $_POST['dt']
+            ':dt' => $_POST['data-nova']
         ]);
     }
-
-?>
-    
-
-
 ?>
