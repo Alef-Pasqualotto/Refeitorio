@@ -32,7 +32,7 @@
                                         <div class="form-floating mb-3">
                                             <input type="hidden" value="3" name="registro" id="registro">
                                             <input class="form-control" id="nome" type="text" name="nome"
-                                                placeholder="Insira seu Primeiro Nome" required />
+                                                placeholder="Insira Nome" required />
                                             <label for="nome">Nome</label>
                                         </div>
                                         <div class="form-floating mb-3">
