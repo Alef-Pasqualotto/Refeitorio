@@ -85,8 +85,14 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div>
-                                    <hr />
+                                <?php
+                                $sessao = isset($_SESSION['usuario_id']);
+                                        if($sessao == false)
+                                        { echo '<div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div><hr />';
+                                        }else{ 
+                                }
+                                ?>    
+              
                                     <div class="small"><a href="logout.php">Página Inicial</a></div>
                                 </div>
                             </div>
