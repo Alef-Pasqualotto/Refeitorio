@@ -58,7 +58,7 @@ switch ($dados['registro']) {
                     ':ingrediente_id' => $ingrediente,
                     ':item_id' => $item_id[0]
                 ]);
-            header('location:..\frontend\system\add-ingrediente.php');
+            header('location:..\frontend\system\add-refeicao.php');
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
