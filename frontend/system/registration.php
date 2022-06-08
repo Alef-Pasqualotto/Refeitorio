@@ -13,6 +13,7 @@
     <title>Cardápio RU | Cadastro </title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <?php session_start(); ?>
 </head>
 
 <body class="bg-primary">
@@ -57,18 +58,24 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php 
+                                        <?php
+                                        $sessao = isset($_SESSION['usuario_id']);
+                                        if($sessao == false)
+                                        {
+                                        }else{
+                                        include_once(__DIR__ . '..\..\..\backend\conecta.php');
                                         $banco = new Banco;
                             $conn = $banco->conectar();
                             if($banco->autentica($_SESSION["usuario_id"])){
-                            echo ('
+        
+                                echo ('
                                          <div class="form-floating mb-3">
                                          <input class="form-control" id="inputcrn" type="number" name="crn"
                                              placeholder="1,2,3" />
                                          <label for="inputcrn">CRN</label>
                                      </div>
                                          ');
-                                            }
+                                            }}
                                             ?>
 
                                         <div class="mt-4 mb-0">
@@ -78,9 +85,15 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div>
-                                    <hr />
-                                    <div class="small"><a href="index.php">Página Inicial</a></div>
+                                <?php
+                                $sessao = isset($_SESSION['usuario_id']);
+                                        if($sessao == false)
+                                        { echo '<div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div><hr />';
+                                        }else{ 
+                                }
+                                ?>    
+              
+                                    <div class="small"><a href="logout.php">Página Inicial</a></div>
                                 </div>
                             </div>
                         </div>
