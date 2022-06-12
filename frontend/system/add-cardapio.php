@@ -20,7 +20,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <title>Adicionar Refeição</title>
+    <title>Adicionar Cardápio</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -51,8 +51,12 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                 </div>
 
                                 <div class="row" style="margin-top:1%;">
-                                    <div class="col-2">ID do Nutricionista:</div>
-                                    <div class="col-6"><input type="number" required name="nutricionista" id="nutricionista" placeholder="Insira o ID do nutricionista" class="form-control"></textarea>
+                                    <div class="col-2">Nutricionista:</div>
+                                    <div class="col-6">
+                                        <select name="nutricionista" id="nutricionista" class="form-control">
+                                        <?php include_once('includes/nutricionistas.php'); ?>
+                                        </select>
+                                        </textarea>
                                     </div>
                                 </div>
 
