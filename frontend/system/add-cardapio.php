@@ -55,6 +55,12 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                 </div>
 
                                 <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">Data de exclusão (opcional):</div>
+                                    <div class="col-6"><input type="date" name="data_exclusao" placeholder="Insira a data de exclusão" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Nutricionista:</div>
                                     <div class="col-6">
                                         <select name="nutricionista" id="nutricionista" class="form-control">

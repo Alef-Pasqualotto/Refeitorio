@@ -102,11 +102,12 @@ switch ($dados['registro']) {
         ]);
         // Se houver um cardapio com estes dados no banco, ele não insere
         if($query->fetch(PDO::FETCH_ASSOC) == null){            
-            $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id) VALUES (:dt, :tipo, :nutricionista);');
+            $query = $conn->prepare('INSERT INTO cardapio (dt, tipo, nutricionista_id, dt_exclusao) VALUES (:dt, :tipo, :nutricionista, :dt_exclusao);');
             $query->execute([
                 ':dt' => $dados['data'],
                 ':tipo' => $dados['tipo'],
-                ':nutricionista' => $dados['nutricionista']
+                ':nutricionista' => $dados['nutricionista'],
+                ':dt_exclusao' => $dados['data_exclusao']
             ]);
             
             $cardapio_id = pegaUltimoId($conn);
