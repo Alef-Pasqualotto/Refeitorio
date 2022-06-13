@@ -3,6 +3,10 @@ include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:add-cardapio.php');
 }
+
+$nutri_id = empty($_GET['nutricionista_id']) ? 0 : $_GET['nutricionista_id'] ;
+$tipo = empty($_GET['tipo']) ? 0 : $_GET['tipo'] ;
+$cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
 ?>
 
 
@@ -65,9 +69,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6">
                                         <select name="tipo" required id="tipo" class="form-control">
                                             <option value="" disabled selected hidden>Insira o tipo do cardápio</option>
-                                            <option value="1">Café</option>
-                                            <option value="2">Almoço</option>
-                                            <option value="3">Janta</option>
+                                            <option value="1" <?php if($tipo == 1) print('selected') ?> >Café</option>
+                                            <option value="2" <?php if($tipo == 2) print('selected') ?> >Almoço</option>
+                                            <option value="3" <?php if($tipo == 3) print('selected') ?> >Janta</option>
                                         </select>
                                     </div>
                                 </div>
