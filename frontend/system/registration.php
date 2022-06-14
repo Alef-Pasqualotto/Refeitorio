@@ -16,7 +16,7 @@
     <?php session_start(); ?>
 </head>
 
-<body class="bg-primary">
+<body class="bg-success">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -80,7 +80,7 @@
 
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">
-                                                <button type="submit" name="submit" class="btn btn-primary btn-block">Criar Conta</button></div>
+                                                <button type="submit" name="submit" class="btn btn-success btn-block">Criar Conta</button></div>
                                         </div>
                                     </form>
                                 </div>
