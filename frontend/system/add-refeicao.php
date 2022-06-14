@@ -50,20 +50,16 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     </div>
                                 </div>
 
-                                
-                                <div class="input-group">
-                                    <div class="form-outline">
-                                        <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()"/>
-                                        <label class="form-label" for="form1">Search</label>
-                                    </div>
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Ingredientes:</div>
                                     <div class="col-6">
+                                        <div class="input-group">
+                                            <div class="form-outline">
+                                                <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
                                         <?php include_once('includes/ingredientes.php'); ?>
                                     </div>
                                 </div>
