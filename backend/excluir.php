@@ -11,15 +11,15 @@ $conn = $banco->conectar();
 
 switch ($dados['registro']) {
     case 1:
-        $query = $conn->prepare('UPDATE ingrediente SET inativo = 1 WHERE ingrediente_id = :ingrediente_id;');        
+        $query = $conn->prepare('UPDATE ingrediente SET inativo = 1 WHERE ingrediente_id = :id;');        
         $query->execute([
-            ':id' => $dados['cardapio_id'],
+            ':id' => $dados['ingrediente_id'],
         ]);
         break;
         case 2:
-                $query = $conn->prepare('UPDATE item SET inativo = 1 WHERE item_id = :item_id;');        
+                $query = $conn->prepare('UPDATE item SET inativo = 1 WHERE item_id = :id;');        
                 $query->execute([
-                    ':id' => $dados['cardapio_id'],
+                    ':id' => $dados['item_id'],
                 ]);
                 break;
         case 3:        
