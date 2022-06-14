@@ -49,18 +49,19 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o nome do prato" class="form-control"></textarea>
                                     </div>
                                 </div>
-
+                                <hr>
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Ingredientes:</div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <div class="form-outline">
-                                                <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" />
+                                                <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <?php include_once('includes/ingredientes.php'); ?>
+
+                                        <div class="col-8">
+                                            <?php include_once('includes/ingredientes.php'); ?>
+                                        </div>
                                     </div>
                                 </div>
 
