@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS refeices;
+
 CREATE DATABASE IF NOT EXISTS refeicoes;
 
 USE refeicoes;
@@ -5,10 +7,12 @@ USE refeicoes;
 CREATE TABLE IF NOT EXISTS ingrediente (ingrediente_id INT NOT NULL AUTO_INCREMENT,
                                         nome VARCHAR(100) NOT NULL,
                                         calorias INT NOT NULL,
+                                        inativo INT,
                                         PRIMARY KEY (ingrediente_id));
 
 CREATE TABLE IF NOT EXISTS item (item_id INT NOT NULL AUTO_INCREMENT,
                                  descricao VARCHAR(100) NOT NULL,
+                                 inativo INT,
                                  PRIMARY KEY (item_id));
 
 CREATE TABLE IF NOT EXISTS ingrediente_item (ingrediente_item_id INT NOT NULL AUTO_INCREMENT,
@@ -40,25 +44,21 @@ CREATE TABLE IF NOT EXISTS cardapio_item (cardapio_item_id INT NOT NULL AUTO_INC
                                      FOREIGN KEY (cardapio_id) REFERENCES cardapio(cardapio_id),
                                      FOREIGN KEY (item_id) REFERENCES item(item_id));
 
-INSERT INTO INGREDIENTE VALUES (1, 'Cebola', 200);
-INSERT INTO INGREDIENTE VALUES (2, 'Maminha', 600);
-INSERT INTO INGREDIENTE VALUES (3, 'Pimentão', 300);
-INSERT INTO INGREDIENTE VALUES (4, 'Cogumelo', 200);
-INSERT INTO INGREDIENTE VALUES (5, 'Limão', 100);
+INSERT INTO INGREDIENTE (nome,calorias,inativo) VALUES ('Cebola', 200, 0);
+INSERT INTO INGREDIENTE (nome,calorias,inativo) VALUES ('Maminha', 600, 0);
+INSERT INTO INGREDIENTE (nome,calorias,inativo) VALUES ('Pimentão', 300, 0);
+INSERT INTO INGREDIENTE (nome,calorias,inativo) VALUES ('Cogumelo', 200, 0);
+INSERT INTO INGREDIENTE (nome,calorias,inativo) VALUES ('Limão', 100, 0);
 
-INSERT INTO ITEM VALUES (1, 'Cebola frita');
-INSERT INTO INGREDIENTE_ITEM VALUES (1, 1, 1);
+INSERT INTO ITEM (descricao, inativo) VALUES ('Cebola frita', 0);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (1, 1);
 
-INSERT INTO ITEM VALUES (2, 'Strogonnof com chanpignon');
-INSERT INTO INGREDIENTE_ITEM VALUES (2, 2, 4);
-INSERT INTO INGREDIENTE_ITEM VALUES (3, 2, 2);
+INSERT INTO ITEM (descricao, inativo) VALUES ('Strogonnof com chanpignon', 0);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (2, 4);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (2, 2);
 
-INSERT INTO ITEM VALUES (3, 'Espetinhos de carne');
-INSERT INTO INGREDIENTE_ITEM VALUES (4, 3, 2);
+INSERT INTO ITEM (descricao, inativo) VALUES ('Espetinhos de carne', 0);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (3, 2);
 
 INSERT INTO USUARIO (nome, senha, email) VALUES ('Francisco Cleber', 'vrido', 'megafrancisco@gmail.com');
 INSERT INTO USUARIO VALUES (2, 'Roberta Guimarães', 'tauba', 'roberta_mineira@hotmail.com', 4);
-
-INSERT INTO cardapio(dt, tipo, nutricionista_id) VALUES ('1994-05-12', '3','2');
-
-INSERT INTO cardapio_item(cardapio_id, item_id) VALUES ('1','2');

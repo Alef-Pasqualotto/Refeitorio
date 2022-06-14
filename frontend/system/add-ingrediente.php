@@ -42,7 +42,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form method="post" action="../../backend/inserir.php">
+                            <form method="post" id="inserirIngrediente" action="../../backend/inserir.php">
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Nome do Ingrediente:</div>
                                     <input type="hidden" name="registro" value='1'>
@@ -52,13 +52,13 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Quantidade de Calorias:</div>
-                                    <div class="col-6"><input type="number" required name="calorias" placeholder="Insira o valor calórico" class="form-control"></textarea>
+                                    <div class="col-6"><input type="number" required name="calorias" placeholder="Insira o valor calórico" class="form-control" value="" id="num"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
-                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary">Enviar</button></div>
+                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary" onclick="validaCalorias()">Enviar</button></div>
                                 </div>
 
                             </form>
@@ -77,5 +77,6 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </html>

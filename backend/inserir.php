@@ -24,12 +24,12 @@ switch ($dados['registro']) {
         ]);
         // Se houver um ingrediente com esse nome no banco, ele não insere
         if($query->fetch(PDO::FETCH_ASSOC) == null){
-            $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias) VALUES (:nome, :calorias);');
+            $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias, inativo) VALUES (:nome, :calorias, 0);');
             $query->execute([
                 ':nome' => $dados['nome'],
                 ':calorias' => $dados['calorias']
             ]);
-            header('location:..\frontend\system\index.php');
+            header('location:..\frontend\system\add-ingrediente.php');
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
             die('Já existe um ingrediente com o mesmo nome cadastrado');
@@ -44,7 +44,7 @@ switch ($dados['registro']) {
         ]);
         // Se houver um item com esse nome no banco, ele não insere
         if($query->fetch(PDO::FETCH_ASSOC) == null){
-            $query = $conn->prepare('INSERT INTO item (descricao) VALUES (:descricao);');
+            $query = $conn->prepare('INSERT INTO item (descricao, inativo) VALUES (:descricao, 0);');
             $query->execute([
                 ':descricao' => $dados['descricao']
             ]);
@@ -58,7 +58,7 @@ switch ($dados['registro']) {
                     ':ingrediente_id' => $ingrediente,
                     ':item_id' => $item_id[0]
                 ]);
-            header('location:..\frontend\system\index.php');
+            header('location:..\frontend\system\add-refeicao.php');
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
