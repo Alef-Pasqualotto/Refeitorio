@@ -42,7 +42,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form method="post" action="../../backend/inserir.php">
+                            <form method="post" id="inserirIngrediente" action="../../backend/inserir.php">
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Nome do Ingrediente:</div>
                                     <input type="hidden" name="registro" value='1'>
@@ -58,7 +58,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
-                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary">Enviar</button></div>
+                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary" onclick="validaCalorias()">Enviar</button></div>
                                 </div>
 
                             </form>

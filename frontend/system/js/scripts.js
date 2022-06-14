@@ -30,3 +30,13 @@ function validaSenha(){
     }
     return true;
 }
+
+function validaCalorias(){
+    let input = document.getElementById('num')
+    if(input.value % 100 != 0){
+        alert("Insira uma quantidade de calorias múltiplo de 100!");
+        input.focus();
+        return false;
+    }
+    return true;
+}
