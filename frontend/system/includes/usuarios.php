@@ -12,3 +12,5 @@ foreach ($conn->query(" SELECT * FROM usuario", PDO::FETCH_ASSOC) as $usuario){
          . '>' . $usuario['nome'] . '</option><br>');        
     }
 
+
+
