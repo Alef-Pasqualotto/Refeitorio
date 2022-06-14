@@ -18,8 +18,8 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <title>Adicionar Refeição</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
@@ -50,6 +50,16 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     </div>
                                 </div>
 
+                                
+                                <div class="input-group">
+                                    <div class="form-outline">
+                                        <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()"/>
+                                        <label class="form-label" for="form1">Search</label>
+                                    </div>
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Ingredientes:</div>
@@ -57,8 +67,6 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                         <?php include_once('includes/ingredientes.php'); ?>
                                     </div>
                                 </div>
-
-
 
 
                                 <div class="row" style="margin-top:1%">
