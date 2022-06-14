@@ -45,7 +45,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <hr />
                         <?php
                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                            echo '<div class="card bg-primary text-white d-grid gap-2 col-6 mx-left">
+                            echo '<div class="card bg-success text-white d-grid gap-2 col-6 mx-left">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
