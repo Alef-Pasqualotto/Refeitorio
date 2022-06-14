@@ -4,11 +4,35 @@ $dados = $_POST;
 $banco = new Banco;
 $conn = $banco->conectar();
 
-//o codigo consiste em mudar a data de exclusao do cardapio, alterando a para ficar menor que a hora atual
+// dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
+// 1 = ingrediente
+// 2 = item
+// 3 = cardapio
 
-$query = $conn->prepare('UPDATE cardapio SET dt_exclusao = CURRENT_TIMESTAMP() - 1 WHERE cardapio_id = :id;');        
-$query->execute([
-    ':id' => $dados['cardapio_id'],
-]);
+switch ($dados['registro']) {
+    case 1:
+        $query = $conn->prepare('UPDATE ingrediente SET inativo = 1 WHERE ingrediente_id = :ingrediente_id;');        
+        $query->execute([
+            ':id' => $dados['cardapio_id'],
+        ]);
+        break;
+        case 2:
+                $query = $conn->prepare('UPDATE item SET inativo = 1 WHERE item_id = :item_id;');        
+                $query->execute([
+                    ':id' => $dados['cardapio_id'],
+                ]);
+                break;
+        case 3:        
+                $query = $conn->prepare('UPDATE cardapio SET dt_exclusao = CURRENT_TIMESTAMP() - 1 WHERE cardapio_id = :id;');        
+                $query->execute([
+                    ':id' => $dados['cardapio_id'],
+                ]);
+                break;
+        case 4:
+
+                break;
+    }
+?>
+
 
 ?>

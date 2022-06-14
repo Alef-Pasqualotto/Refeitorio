@@ -24,7 +24,7 @@ switch ($dados['registro']) {
         ]);
         // Se houver um ingrediente com esse nome no banco, ele não insere
         if($query->fetch(PDO::FETCH_ASSOC) == null){
-            $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias) VALUES (:nome, :calorias);');
+            $query = $conn->prepare('INSERT INTO ingrediente (nome, calorias, inativo) VALUES (:nome, :calorias, 0);');
             $query->execute([
                 ':nome' => $dados['nome'],
                 ':calorias' => $dados['calorias']
@@ -44,7 +44,7 @@ switch ($dados['registro']) {
         ]);
         // Se houver um item com esse nome no banco, ele não insere
         if($query->fetch(PDO::FETCH_ASSOC) == null){
-            $query = $conn->prepare('INSERT INTO item (descricao) VALUES (:descricao);');
+            $query = $conn->prepare('INSERT INTO item (descricao, inativo) VALUES (:descricao, 0);');
             $query->execute([
                 ':descricao' => $dados['descricao']
             ]);

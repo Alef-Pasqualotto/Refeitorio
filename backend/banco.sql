@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS refeices;
+
 CREATE DATABASE IF NOT EXISTS refeicoes;
 
 USE refeicoes;
