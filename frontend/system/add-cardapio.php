@@ -92,7 +92,7 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
-                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary">Enviar</button></div>
+                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-success">Enviar</button></div>
                                 </div>
 
                             </form>
