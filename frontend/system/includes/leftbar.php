@@ -25,6 +25,10 @@
                                     <a class="nav-link" href="add-ingrediente.php">Ingrediente</a>                                     
                                 </nav>
                             </div>
+                            <a class="nav-link" href="gerenciar.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Gerenciar Usuário
+                            </a>
                             
                             <a class="nav-link" href="registration.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
