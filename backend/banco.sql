@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS cardapio (cardapio_id INT NOT NULL AUTO_INCREMENT,
                                      dt date NOT NULL,
                                      tipo INT NOT NULL,
                                      nutricionista_id INT NOT NULL,
+                                     dt_exclusao datetime,
                                      PRIMARY KEY (cardapio_id),
                                      FOREIGN KEY (nutricionista_id) REFERENCES usuario(usuario_id));
 

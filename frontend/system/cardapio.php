@@ -115,7 +115,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td><?php echo htmlentities($i + 1); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome_do_prato"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["tipo"]); ?></td>
-                                                    <td><?php echo htmlentities($itens[$i]["dt"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["data_formatada"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome"]); ?></td>

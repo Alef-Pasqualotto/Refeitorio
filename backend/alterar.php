@@ -7,7 +7,7 @@ $conn = $banco->conectar();
 // dependendo do valor que vier em registro, nós inserimos em uma tabela diferente
 // 1 = ingrediente
 // 2 = item
-// 3 = cardapio
+// 3 = cardapi
 
 
 switch ($dados['registro']) {
