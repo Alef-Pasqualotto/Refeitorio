@@ -131,14 +131,6 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" href="#">Editar</a></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                                              <li><a class="dropdown-item" href="#">Clonar</a></li>
-                                                              <li><a class="dropdown-item" href="../../backend/excluir.php?registro=2&item_id=">Excluir refeição</a></li>
-                                                              <li><a class="dropdown-item" href="../../backend/excluir.php?registro=3&cardapio_id=1">Excluir cardápio</a></li>
-=======
-                                                              <li><a class="dropdown-item" href='. __DIR__ . '..\..\..\backend\buscar.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
-=======
                                                               <li><a class="dropdown-item" href=add-cardapio.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
 >>>>>>> 9de8a30f59997b5b16c0700c96b9dae82e11887c
                                                               <li><a class="dropdown-item" href="excluir.php">Excluir</a></li>
