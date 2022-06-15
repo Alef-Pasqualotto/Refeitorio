@@ -52,7 +52,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
+                                            <a class="text-white stretched-link" href="add-cardapio.php">Adicionar Cardápio</a>
                                         </div>
                                     </div>
                                 </div>
