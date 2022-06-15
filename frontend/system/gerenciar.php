@@ -50,38 +50,40 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                             <input type="hidden" name="registro" value='4'>
 
                                 <div class="row" style="margin-top:1%;">
-                                    <div class="col-2">Usuário:</div>
+                                    <div class="col-2">Nome do usuário:</div>
                                     <div class="col-6">
-                                        <select name="nome" id="nome" class="form-control">
+                                        <select name="id" id="id" class="form-control">
                                         <?php include_once('includes/usuarios.php'); ?>
                                         </select>
-                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">Novo nome do usuário:</div>
+                                    <div class="col-6">
+                                        <input type="text" name="nome" id="nome" placeholder="Insira o nome" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%;">
                                 <div class="col-2">Email:</div>
                                     <div class="col-6">
-                                        <input type="text" name="email" placeholder="Insira o Email" class="form-control">
-                                        </textarea>
+                                        <input type="text" name="email" id="email" placeholder="Insira o Email" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%;">
                                 <div class="col-2">Senha:</div>
                                     <div class="col-6">
-                                        <input type="text" name="senha" placeholder="Senha do usuário" class="form-control">
-                                        </textarea>
+                                        <input type="text" name="senha" id="senha" placeholder="Senha do usuário" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%;">
                                 <div class="col-2">CRN:</div>
                                     <div class="col-6">
-                                        <input type="number" name="crn" placeholder="Insira o CRN" class="form-control">
-                                        </textarea>
+                                        <input type="number" name="crn"  id="crn" placeholder="Insira o CRN" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
-                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary">Salvar</button></div>
+                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-primary" href="cardapio.php">Salvar</button></div>
                                 </div>
 
                             </form>
