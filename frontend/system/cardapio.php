@@ -46,18 +46,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <hr />
                         <?php
                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                            echo '<div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="me-3">
-                                            <a class="text-white stretched-link" href="add-cardapio.php">Adicionar Cardápio</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                            <br>
-
+                            echo '
                             <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -67,9 +56,15 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     </div>
                                 </div>
                             </div>
-
-                            <br>
-
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-3">
+                                            <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -78,9 +73,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <br>';
+                            </div>';
                         }
                         ?>
 
@@ -155,14 +148,14 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Editar</a></li>
-                                                              <li><a class="dropdown-item" href=add-cardapio.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
-                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id='. $itens[$i]["item_id"] . '>Excluir refeição</a></li>
-                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id='. $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
+                                                              <li><a class="dropdown-item" href=add-cardapio.php?tipo=' . $itens[$i]["tipo"] . '&nutricionista_id=' . $itens[$i]["usuario_id"] . '&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Clonar</a></li>
+                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id=' . $itens[$i]["item_id"] . '>Excluir refeição</a></li>
+                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
                                                               
                                                             </ul>
                                                           </div>';
                                                         }
-                                                        ?>                                                       
+                                                        ?>
                                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -185,16 +178,17 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="date" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="row" style="margin-top:1%;">
-                                                                            <div class="col-2">Ingredientes:</div>
+                                                                            <div class="col-3">Ingredientes:</div>
                                                                             <div class="col-6">
                                                                                 <div class="input-group">
                                                                                     <div class="form-outline">
                                                                                         <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
                                                                                     </div>
                                                                                 </div>
-
-                                                                                <div class="col-8">
-                                                                                    <?php include_once('includes/ingredientes.php'); ?>
+                                                                                <div class="row" style="margin-top:1%;">
+                                                                                    <div class="col-12">
+                                                                                        <?php include_once('includes/ingredientes.php'); ?>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -227,7 +221,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
         <script src="js/scripts.js"></script>
-        
+
     </body>
 
     </html>
