@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS refeices;
+DROP DATABASE refeicoes;
 
 CREATE DATABASE IF NOT EXISTS refeicoes;
 
