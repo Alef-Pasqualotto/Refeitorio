@@ -47,32 +47,34 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <?php
                         if ($banco->autentica($_SESSION["usuario_id"])) {
                             echo '
-                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
+                            <div class="row mb-4">
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left me-1" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="me-3">
+                                        <div>
                                             <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left me-1" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="me-3">
+                                        <div>
                                             <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left me-1" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="me-3">
+                                        <div>
                                             <a class="text-white stretched-link" href="add-ingrediente.php">Adicionar Ingrediente</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>';
                         }
                         ?>
