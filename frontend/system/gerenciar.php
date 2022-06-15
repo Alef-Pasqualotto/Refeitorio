@@ -58,7 +58,7 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                         </textarea>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="row" style="margin-top:1%;">
                                 <div class="col-2">Email:</div>
                                     <div class="col-6">
                                         <select name="email" id="email" class="form-control">
@@ -67,6 +67,7 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                         </textarea>
                                     </div>
                                 </div>
+                                <div class="row" style="margin-top:1%;">
                                 <div class="col-2">Senha:</div>
                                     <div class="col-6">
                                         <select name="senha" id="senha" class="form-control">
