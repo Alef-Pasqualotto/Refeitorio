@@ -60,19 +60,19 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Novo nome do usuário:</div>
                                     <div class="col-6">
-                                        <input type="text" name="nome" id="nome" placeholder="Insira o nome" class="form-control">
+                                        <input type="text" name="nome" id="nome" placeholder="Insira o nome" class="form-control" require>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%;">
                                 <div class="col-2">Email:</div>
                                     <div class="col-6">
-                                        <input type="text" name="email" id="email" placeholder="Insira o Email" class="form-control">
+                                        <input type="text" name="email" id="email" placeholder="Insira o Email" class="form-control" require>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%;">
                                 <div class="col-2">Senha:</div>
                                     <div class="col-6">
-                                        <input type="text" name="senha" id="senha" placeholder="Senha do usuário" class="form-control">
+                                        <input type="text" name="senha" id="senha" placeholder="Senha do usuário" class="form-control" require>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top:1%;">
