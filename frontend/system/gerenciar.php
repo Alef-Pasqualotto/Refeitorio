@@ -39,20 +39,20 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Adicionar Cardápio</h1>
+                    <h1 class="mt-4">Gerenciar usuários</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="cardapio.php">Cardápio</a></li>
-                        <li class="breadcrumb-item active">Adicionar Cardápio</li>
+                        <li class="breadcrumb-item active">Gerenciar usuários</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form method="post" action="../../backend/inserir.php">
+                            <form method="post" action="../../backend/alterar.php">
                             <input type="hidden" name="registro" value='4'>
 
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Usuário:</div>
                                     <div class="col-6">
-                                        <select name="usuario" id="usuario" class="form-control">
+                                        <select name="nome" id="nome" class="form-control">
                                         <?php include_once('includes/usuarios.php'); ?>
                                         </select>
                                         </textarea>
@@ -61,25 +61,22 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                 <div>
                                 <div class="col-2">Email:</div>
                                     <div class="col-6">
-                                        <select name="email" id="email" class="form-control">
-                                        <?php include_once('includes/usuarios.php'); ?>
-                                        </select>
+                                        <input type="text" name="email" placeholder="Insira o Email" class="form-control">
                                         </textarea>
                                     </div>
                                 </div>
                                 <div class="col-2">Senha:</div>
                                     <div class="col-6">
-                                        <select name="senha" id="senha" class="form-control">
-                                        <?php include_once('includes/usuarios.php'); ?>
-                                        </select>
+                                        <input type="text" name="senha" placeholder="Senha do usuário" class="form-control">
                                         </textarea>
                                     </div>
                                 </div>
-                                
-
-                                
-
-
+                                <div class="col-2">CRN:</div>
+                                    <div class="col-6">
+                                        <input type="number" name="crn" placeholder="Insira o CRN" class="form-control">
+                                        </textarea>
+                                    </div>
+                                </div>
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
                                     <div class="col-2"><button type="submit" name="submit" class="btn btn-primary">Salvar</button></div>
