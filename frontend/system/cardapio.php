@@ -170,14 +170,14 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="hidden" id="id" />
                                                                             <div class="mb-3">
                                                                                 <label for="nome" class="form-label">Nome da Refeição</label>
-                                                                                <input type="text" class="form-control" id="nome">
+                                                                                <?php echo '<input type="text" class="form-control" id="nome" value="'. ($itens[$i]["nome_do_prato"] . '"' )?>
                                                                             </div>
                                                                             <div class="mb-3">
                                                                                 <label for="tipo" class="form-label">Tipo</label>
                                                                                 <select class="form-select" name="tipo" id="tipo">
-                                                                                    <option value="1">Café da Manhã</option>
-                                                                                    <option value="2">Almoço</option>
-                                                                                    <option value="3">Janta</option>
+                                                                                    <option value="1" <?php if ($itens[$i]['tipo'] == 1) print('selected') ?>>Café</option>
+                                                                                    <option value="2" <?php if ($itens[$i]['tipo'] == 2) print('selected') ?>>Almoço</option>
+                                                                                    <option value="3" <?php if ($itens[$i]['tipo'] == 3) print('selected') ?>>Janta</option>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="mb-3">
