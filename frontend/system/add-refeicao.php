@@ -48,8 +48,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <input type="hidden" name="registro" value='2'>
                                     <div class="col-6"><input type="text" required name="descricao" placeholder="Insira o nome do prato" class="form-control"></textarea>
                                     </div>
-                                </div>
-                                <hr>
+                                </div>                                
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Ingredientes:</div>
                                     <div class="col-6">
