@@ -61,7 +61,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
-                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-success" onclick="validaCalorias()">Enviar</button></div>
+                                    <div class="col-2"><button class="btn btn-success" type="button" onclick="validaCalorias()">Enviar</button></div>
                                 </div>
 
                             </form>
