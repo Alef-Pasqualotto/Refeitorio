@@ -46,12 +46,12 @@ CREATE TABLE IF NOT EXISTS cardapio_item (cardapio_item_id INT NOT NULL AUTO_INC
 
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Cebola', 200);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Maminha', 600);
-INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Pimentão', 300);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Pimenton', 300);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Cogumelo', 200);
-INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Limão', 100);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Limon', 100);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Carne de Frango', 300);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Arroz', 300);
-INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Requeijão', 400);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Requeijon', 400);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Carne de Gado', 300);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Massa Penne', 500);
 
@@ -75,4 +75,4 @@ INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (5, 9);
 INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (5, 10);
 
 INSERT INTO USUARIO (nome, senha, email) VALUES ('Francisco Cleber', 'vrido', 'megafrancisco@gmail.com');
-INSERT INTO USUARIO VALUES (2, 'Roberta Guimarães', 'tauba', 'roberta_mineira@hotmail.com', 4);
+INSERT INTO USUARIO VALUES (2, 'Roberta Guimaris', 'tauba', 'roberta_mineira@hotmail.com', 4);
