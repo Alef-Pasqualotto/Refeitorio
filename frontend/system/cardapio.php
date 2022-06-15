@@ -130,7 +130,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" href="#">Editar</a></li>
                                                               <li><a class="dropdown-item" href=add-cardapio.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
-                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id='. $itens[$i]["item_id"] . '>Excluir refeição</a></li>
+                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id='. $itens[$i]["item.item_id"] . '>Excluir refeição</a></li>
                                                               <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id='. $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
                                                               
                                                             </ul>
