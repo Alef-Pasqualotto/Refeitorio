@@ -22,7 +22,7 @@ switch ($dados['registro']) {
                 $query->execute([
                     ':id' => $dados['item_id'],
                 ]);
-                header('location:..\frontend\system\add-ingrediente.php');
+                header('location:..\frontend\system\cardapio.php');
                 break;
         case 3:        
                 $query = $conn->prepare('UPDATE cardapio SET dt_exclusao = (CURRENT_TIMESTAMP() - 1) WHERE cardapio_id = :id;');        
