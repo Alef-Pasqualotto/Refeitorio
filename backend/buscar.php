@@ -27,7 +27,6 @@ switch ($pesquisa) {
             INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
             WHERE week(dt) = week(:dt) and (cardapio.dt_exclusao = 0000-00-00 OR cardapio.dt_exclusao > CURRENT_TIMESTAMP()) GROUP BY dt, nome_do_prato, tipo;');
-        echo '<pre>';
         $query->execute([
             ':dt' => $data
         ]);
