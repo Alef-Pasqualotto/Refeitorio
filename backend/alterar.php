@@ -45,8 +45,9 @@ switch ($dados['registro']) {
                 ':senha' => $dados['senha'],
                 ':email' => $dados['email'],
                 ':crn' => $dados['crn']
-                
+                           
             ]);
+            header('location:..\frontend\system\gerenciar.php');
             break; 
     }
 ?>
