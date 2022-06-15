@@ -13,7 +13,7 @@ switch ($pesquisa) {
             from cardapio_item INNER JOIN cardapio ON cardapio_item.cardapio_id = cardapio.cardapio_id 
             INNER JOIN item on cardapio_item.item_id = item.item_id INNER JOIN ingrediente_item on item.item_id = ingrediente_item.item_id 
             INNER JOIN ingrediente on ingrediente_item.ingrediente_id = ingrediente.ingrediente_id INNER JOIN usuario on cardapio.nutricionista_id = usuario.usuario_id 
-            WHERE cardapio.dt_exclusao = 0000-00-00 OR cardapio.dt_exclusao > CURRENT_TIMESTAMP() AND item.dt_exclusao IS NULL
+            WHERE (cardapio.dt_exclusao = 0000-00-00 OR cardapio.dt_exclusao > CURRENT_TIMESTAMP()) AND item.dt_exclusao IS NULL
             GROUP BY dt, nome_do_prato, tipo;');        
         return $query->fetchAll(PDO::FETCH_ASSOC);
         break;
