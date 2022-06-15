@@ -50,11 +50,37 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
+                                            <a class="text-white stretched-link" href="add-cardapio.php">Adicionar Cardápio</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <br>
+
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-3">
                                             <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div><br>';
+                            </div>
+
+                            <br>
+
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-3">
+                                            <a class="text-white stretched-link" href="add-ingrediente.php">Adicionar Ingrediente</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>';
                         }
                         ?>
 
@@ -128,7 +154,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                              <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Editar</a></li>
                                                               <li><a class="dropdown-item" href=add-cardapio.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
                                                               <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id='. $itens[$i]["item.item_id"] . '>Excluir refeição</a></li>
                                                               <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id='. $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
@@ -151,17 +177,29 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="text" class="form-control" id="nome">
                                                                         </div>
                                                                         <div class="mb-3">
+                                                                            <label for="nome" class="form-label">Tipo</label>
+                                                                            <input type="text" class="form-control" id="tipo">
+                                                                        </div>
+                                                                        <div class="mb-3">
                                                                             <label for="dtnasc" class="form-label">Data</label>
                                                                             <input type="date" class="form-control" id="dtnasc">
                                                                         </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Nutricionista</label>
-                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        <div class="row" style="margin-top:1%;">
+                                                                            <div class="col-2">Ingredientes:</div>
+                                                                            <div class="col-6">
+                                                                                <div class="input-group">
+                                                                                    <div class="form-outline">
+                                                                                        <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-8">
+                                                                                    <?php include_once('includes/ingredientes.php'); ?>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                            <button id="excluir" class="btn btn-danger" type="button" action='excluir.php?id="<?php echo $item['id']; ?>"' method="get">Excluir</button>
-                                                                            <button id="clonar" class="btn btn-success" type="button">Clonar</button>
                                                                             <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
                                                                         </div>
                                                                     </div>
