@@ -1,4 +1,5 @@
 <?php session_start();
+$aux = true;
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:add-ingrediente.php');
@@ -55,10 +56,18 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6"><input type="number" required name="calorias" placeholder="Insira o valor calórico" class="form-control" value="" id="num"></textarea>
                                     </div>
                                 </div>
+                                <hr>                                
+                                <div class="col-2">Excluir ingredientes:</div>
+                                <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">&nbsp;</div>
+                                    <div class="col-6">
+                                        <?php include_once('includes/ingredientes.php'); ?>
+                                    </div>
+                                </div>
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
-                                    <div class="col-2"><button type="submit" name="submit" class="btn btn-success" onclick="validaCalorias()">Enviar</button></div>
+                                    <div class="col-2"><button class="btn btn-success" type="button" onclick="validaCalorias()">Enviar</button></div>
                                 </div>
 
                             </form>

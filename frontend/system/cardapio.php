@@ -26,7 +26,8 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <title>Cardápio RU</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" /> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -45,15 +46,36 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <hr />
                         <?php
                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                            echo '<div class="card bg-success text-white d-grid gap-2 col-6 mx-left">
+                            echo '
+                            <div class="row mb-4">
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left me-1" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="me-3">
+                                        <div>
+                                            <a class="text-white stretched-link" href="add-cardapio.php">Adicionar Cardápio</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left me-1" style="width: fit-content">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
                                             <a class="text-white stretched-link" href="add-refeicao.php">Adicionar Refeição</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div><br>';
+                            </div>
+                            <div class="card bg-success text-white d-grid gap-2 col-6 mx-left me-1" style="width: fit-content">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <a class="text-white stretched-link" href="add-ingrediente.php">Adicionar Ingrediente</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>';
                         }
                         ?>
 
@@ -114,7 +136,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <tr>
                                                     <td><?php echo htmlentities($i + 1); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome_do_prato"]); ?></td>
-                                                    <td><?php echo htmlentities($itens[$i]["tipo"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["tipo_formatado"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["data_formatada"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
@@ -123,11 +145,19 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td>
                                                         <?php
                                                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                                                            echo '<button id="novo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Ver
-                                                </button>';
+                                                            echo '<div class="dropdup">
+                                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            </button>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Editar</a></li>
+                                                              <li><a class="dropdown-item" href=add-cardapio.php?tipo=' . $itens[$i]["tipo"] . '&nutricionista_id=' . $itens[$i]["usuario_id"] . '&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Clonar</a></li>
+                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id=' . $itens[$i]["item_id"] . '>Excluir refeição</a></li>
+                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
+                                                              
+                                                            </ul>
+                                                          </div>';
                                                         }
-                                                        ?>                                                       
+                                                        ?>
                                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -136,25 +166,44 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <input type="hidden" id="id" />
-                                                                        <div class="mb-3">
-                                                                            <label for="nome" class="form-label">Nome da Refeição</label>
-                                                                            <input type="text" class="form-control" id="nome">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Data</label>
-                                                                            <input type="date" class="form-control" id="dtnasc">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Nutricionista</label>
-                                                                            <input type="text" class="form-control" id="dtnasc">
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                            <button id="excluir" class="btn btn-danger" type="button" action='excluir.php?id="<?php echo $item['id']; ?>"' method="get">Excluir</button>
-                                                                            <button id="clonar" class="btn btn-success" type="button">Clonar</button>
-                                                                            <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
-                                                                        </div>
+                                                                        <form action="" method="post">
+                                                                            <input type="hidden" id="id" />
+                                                                            <div class="mb-3">
+                                                                                <label for="nome" class="form-label">Nome da Refeição</label>
+                                                                                <?php echo '<input type="text" class="form-control" id="nome" value="'. ($itens[$i]["nome_do_prato"] . '"' )?>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="tipo" class="form-label">Tipo</label>
+                                                                                <select class="form-select" name="tipo" id="tipo">
+                                                                                    <option value="1" <?php if ($itens[$i]['tipo'] == 1) print('selected') ?>>Café</option>
+                                                                                    <option value="2" <?php if ($itens[$i]['tipo'] == 2) print('selected') ?>>Almoço</option>
+                                                                                    <option value="3" <?php if ($itens[$i]['tipo'] == 3) print('selected') ?>>Janta</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="dtnasc" class="form-label">Data</label>
+                                                                                <input type="date" class="form-control" id="dtnasc">
+                                                                            </div>
+                                                                            <div class="row" style="margin-top:1%;">
+                                                                                <div class="col-3">Ingredientes:</div>
+                                                                                <div class="col-6">
+                                                                                    <div class="input-group">
+                                                                                        <div class="form-outline">
+                                                                                            <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row" style="margin-top:1%;">
+                                                                                        <div class="col-12">
+                                                                                            <?php include_once('includes/ingredientes.php'); ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                                <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -171,13 +220,16 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script src="js/scripts.js"></script>
+
     </body>
 
     </html>

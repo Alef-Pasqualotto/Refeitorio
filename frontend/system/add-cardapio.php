@@ -4,9 +4,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:add-cardapio.php');
 }
 
-$nutri_id = empty($_GET['nutricionista_id']) ? 0 : $_GET['nutricionista_id'] ;
-$tipo = empty($_GET['tipo']) ? 0 : $_GET['tipo'] ;
-$cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
+$nutri_id = empty($_GET['nutricionista_id']) ? 0 : $_GET['nutricionista_id'];
+$tipo = empty($_GET['tipo']) ? 0 : $_GET['tipo'];
+$cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'];
 ?>
 
 
@@ -22,8 +22,8 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <title>Adicionar Cardápio</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
@@ -47,7 +47,7 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                     <div class="card mb-4">
                         <div class="card-body">
                             <form method="post" action="../../backend/inserir.php">
-                            <input type="hidden" name="registro" value='4'>
+                                <input type="hidden" name="registro" value='4'>
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Data:</div>
                                     <div class="col-6"><input type="date" required name="data" placeholder="Insira a data" class="form-control"></textarea>
@@ -64,7 +64,7 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                     <div class="col-2">Nutricionista:</div>
                                     <div class="col-6">
                                         <select name="nutricionista" id="nutricionista" class="form-control">
-                                        <?php include_once('includes/nutricionistas.php'); ?>
+                                            <?php include_once('includes/nutricionistas.php'); ?>
                                         </select>
                                         </textarea>
                                     </div>
@@ -75,9 +75,9 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                     <div class="col-6">
                                         <select name="tipo" required id="tipo" class="form-control">
                                             <option value="" disabled selected hidden>Insira o tipo do cardápio</option>
-                                            <option value="1" <?php if($tipo == 1) print('selected') ?> >Café</option>
-                                            <option value="2" <?php if($tipo == 2) print('selected') ?> >Almoço</option>
-                                            <option value="3" <?php if($tipo == 3) print('selected') ?> >Janta</option>
+                                            <option value="1" <?php if ($tipo == 1) print('selected') ?>>Café</option>
+                                            <option value="2" <?php if ($tipo == 2) print('selected') ?>>Almoço</option>
+                                            <option value="3" <?php if ($tipo == 3) print('selected') ?>>Janta</option>
                                         </select>
                                     </div>
                                 </div>
@@ -85,6 +85,11 @@ $cardapio_id = empty($_GET['cardapio_id']) ? 0 : $_GET['cardapio_id'] ;
                                 <div class="row" style="margin-top:1%;">
                                     <div class="col-2">Itens:</div>
                                     <div class="col-6">
+                                        <div class="input-group">
+                                            <div class="form-outline">
+                                                <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
+                                            </div>
+                                        </div>
                                         <?php include_once('includes/itens.php'); ?>
                                     </div>
                                 </div>

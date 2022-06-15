@@ -36,16 +36,19 @@ switch ($dados['registro']) {
     
             ]);
             break;
+
         case 4:
-            $query = $conn->prepare('UPDATE usuario SET nome = :nome, senha = :senha, email = :email , crn = :crn WHERE usuario_id = :id;');
+            $query = $conn->prepare('UPDATE usuario SET nome = :nome, senha = :senha, email = :email , crn = :crn WHERE usuario_id = :id');
             $query->execute([
-                ':id' => $dados['usuario_id'],
+                ':id' => $dados['id'],
                 ':nome' => $dados['nome'],
                 ':senha' => $dados['senha'],
                 ':email' => $dados['email'],
                 ':crn' => $dados['crn']
+                           
             ]);
-            break;
+            header('location:..\frontend\system\gerenciar.php');
+            break; 
     }
 ?>
 
