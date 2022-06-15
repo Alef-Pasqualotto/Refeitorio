@@ -26,7 +26,7 @@
                                 </nav>
                             </div>
                             <a class="nav-link" href="gerenciar.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                                 Gerenciar Usuário
                             </a>
                             
