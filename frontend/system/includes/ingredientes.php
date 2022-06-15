@@ -9,7 +9,7 @@ $conn = $banco->conectar();
 foreach ($conn->query(" SELECT * FROM ingrediente WHERE dt_exclusao IS NULL" , PDO::FETCH_ASSOC) as $ingrediente){
         echo ('<div class="pesquisavel">');
         echo !$aux ? '<input type="checkbox" value="' . $ingrediente['ingrediente_id'] . '"name=ingredientes[]> ' . $ingrediente['nome'] : $ingrediente['nome'] ;
-        echo $aux ? '<a href=../../backend/excluir.php?registro=1&ingrediente_id='. $ingrediente['ingrediente_id'] . '> Excluir</a>'  : null;
+        echo $aux ? ' <a class="link-danger" href=../../backend/excluir.php?registro=1&ingrediente_id='. $ingrediente['ingrediente_id'] . '>Excluir</a>'  : null;
         echo ('</br></div>');
     }
 
