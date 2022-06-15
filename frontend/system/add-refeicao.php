@@ -58,18 +58,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
                                             </div>
                                         </div>
-<<<<<<< HEAD
                                     </div>
                                     <div class="col-6">
                                         <?php include_once('includes/ingredientes.php'); ?>
-=======
-
-                                        <div class="col-8">
-                                            <?php include_once('includes/ingredientes.php'); ?>
-                                        </div>
->>>>>>> 29633c72fe56a667422c25824407990dbc3c08fc
                                     </div>
-                                </div>
+                                </div> 
 
 
                                 <div class="row" style="margin-top:1%">
