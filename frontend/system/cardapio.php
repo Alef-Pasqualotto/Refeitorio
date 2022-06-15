@@ -126,8 +126,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                         <?php
                                                         if ($banco->autentica($_SESSION["usuario_id"])) {
                                                             echo '<div class="dropdup">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            
+                                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" href="#">Editar</a></li>
