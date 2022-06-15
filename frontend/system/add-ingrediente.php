@@ -57,9 +57,12 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     </div>
                                 </div>
 
-                                <div class="col-8">
-                                            <?php include_once('includes/ingredientes.php'); ?>
-                                        </div>
+                                <hr>
+                                <div class="col-2">Excluir ingredientes:
+                                    <div class="col-8">
+                                        <?php include_once('includes/ingredientes.php'); ?>
+                                    </div>
+                                </div>
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
