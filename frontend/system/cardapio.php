@@ -1,4 +1,5 @@
 <?php session_start();
+header('https://www.youtube.com/watch?v=RMMlWvLJBtQ&t=50s');
 error_reporting(0);
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
@@ -129,8 +130,10 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                              <li><a class="dropdown-item" href='. __DIR__ . '..\..\..\backend\buscar.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
-                                                              <li><a class="dropdown-item" href="excluir.php">Excluir</a></li>
+                                                              <li><a class="dropdown-item" href=add-cardapio.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
+                                                              <li><a class="dropdown-item" href="../../backend/excluir.php?registro=2&item_id=">Excluir refeição</a></li>
+                                                              <li><a class="dropdown-item" href="../../backend/excluir.php?registro=3&cardapio_id=1">Excluir cardápio</a></li>
+
                                                             </ul>
                                                           </div>';
                                                         }
