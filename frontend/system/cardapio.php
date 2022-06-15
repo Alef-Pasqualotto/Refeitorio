@@ -46,7 +46,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                         <hr />
                         <?php
                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                            echo '<div class="card bg-success text-white d-grid gap-2 col-6 mx-left">
+                            echo '<div class="card bg-success text-white d-grid gap-2 col-6 mx-left" style="width: fit-content">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
@@ -124,14 +124,14 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                     <td>
                                                         <?php
                                                         if ($banco->autentica($_SESSION["usuario_id"])) {
-                                                            echo '<div class="dropdown">
+                                                            echo '<div class="dropdup">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                              Dropdown button
+                                                            
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                              <li><a class="dropdown-item" href="#">Action</a></li>
-                                                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                              <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                              <li><a class="dropdown-item" href="#">Clonar</a></li>
+                                                              <li><a class="dropdown-item" href="excluir.php">Excluir</a></li>
                                                             </ul>
                                                           </div>';
                                                         }
@@ -179,9 +179,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
 
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
