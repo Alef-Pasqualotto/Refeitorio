@@ -177,12 +177,26 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="text" class="form-control" id="nome">
                                                                         </div>
                                                                         <div class="mb-3">
+                                                                            <label for="nome" class="form-label">Tipo</label>
+                                                                            <input type="text" class="form-control" id="tipo">
+                                                                        </div>
+                                                                        <div class="mb-3">
                                                                             <label for="dtnasc" class="form-label">Data</label>
                                                                             <input type="date" class="form-control" id="dtnasc">
                                                                         </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Ingrediente</label>
-                                                                            <input type="text" class="form-control" id="dtnasc">
+                                                                        <div class="row" style="margin-top:1%;">
+                                                                            <div class="col-2">Ingredientes:</div>
+                                                                            <div class="col-6">
+                                                                                <div class="input-group">
+                                                                                    <div class="form-outline">
+                                                                                        <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-8">
+                                                                                    <?php include_once('includes/ingredientes.php'); ?>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
