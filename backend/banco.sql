@@ -49,6 +49,11 @@ INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Maminha', 600);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Pimentão', 300);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Cogumelo', 200);
 INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Limão', 100);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Carne de Frango', 300);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Arroz', 300);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Requeijão', 400);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Carne de Gado', 300);
+INSERT INTO INGREDIENTE (nome,calorias) VALUES ('Massa Penne', 500);
 
 INSERT INTO ITEM (descricao) VALUES ('Cebola frita');
 INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (1, 1);
@@ -59,6 +64,15 @@ INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (2, 2);
 
 INSERT INTO ITEM (descricao) VALUES ('Espetinhos de carne');
 INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (3, 2);
+
+INSERT INTO ITEM (descricao) VALUES ('Arroz com Frango');
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (4, 6);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (4, 7);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (4, 8);
+
+INSERT INTO ITEM (descricao) VALUES ('Massa com Iscas de Gado');
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (5, 9);
+INSERT INTO INGREDIENTE_ITEM (item_id, ingrediente_id) VALUES (5, 10);
 
 INSERT INTO USUARIO (nome, senha, email) VALUES ('Francisco Cleber', 'vrido', 'megafrancisco@gmail.com');
 INSERT INTO USUARIO VALUES (2, 'Roberta Guimarães', 'tauba', 'roberta_mineira@hotmail.com', 4);
