@@ -1,4 +1,5 @@
 <?php session_start();
+$aux = false;
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
     header('location:add-refeicao.php');

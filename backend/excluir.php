@@ -1,6 +1,6 @@
 <?php
 include_once('conecta.php');
-$dados = $_POST;
+$dados = $_GET;
 $banco = new Banco;
 $conn = $banco->conectar();
 
@@ -32,7 +32,4 @@ switch ($dados['registro']) {
 
                 break;
     }
-?>
-
-
 ?>
