@@ -166,38 +166,44 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <input type="hidden" id="id" />
-                                                                        <div class="mb-3">
-                                                                            <label for="nome" class="form-label">Nome da Refeição</label>
-                                                                            <input type="text" class="form-control" id="nome">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="nome" class="form-label">Tipo</label>
-                                                                            <input type="text" class="form-control" id="tipo">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Data</label>
-                                                                            <input type="date" class="form-control" id="dtnasc">
-                                                                        </div>
-                                                                        <div class="row" style="margin-top:1%;">
-                                                                            <div class="col-3">Ingredientes:</div>
-                                                                            <div class="col-6">
-                                                                                <div class="input-group">
-                                                                                    <div class="form-outline">
-                                                                                        <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
+                                                                        <form action="" method="post">
+                                                                            <input type="hidden" id="id" />
+                                                                            <div class="mb-3">
+                                                                                <label for="nome" class="form-label">Nome da Refeição</label>
+                                                                                <input type="text" class="form-control" id="nome">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="tipo" class="form-label">Tipo</label>
+                                                                                <select class="form-select" name="tipo" id="tipo">
+                                                                                    <option value="1">Café da Manhã</option>
+                                                                                    <option value="2">Almoço</option>
+                                                                                    <option value="3">Janta</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="dtnasc" class="form-label">Data</label>
+                                                                                <input type="date" class="form-control" id="dtnasc">
+                                                                            </div>
+                                                                            <div class="row" style="margin-top:1%;">
+                                                                                <div class="col-3">Ingredientes:</div>
+                                                                                <div class="col-6">
+                                                                                    <div class="input-group">
+                                                                                        <div class="form-outline">
+                                                                                            <input id="search-focus" type="search" id="form1" class="form-control" onkeyup="pesquisar()" placeholder="Pesquisa" />
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="row" style="margin-top:1%;">
-                                                                                    <div class="col-12">
-                                                                                        <?php include_once('includes/ingredientes.php'); ?>
+                                                                                    <div class="row" style="margin-top:1%;">
+                                                                                        <div class="col-12">
+                                                                                            <?php include_once('includes/ingredientes.php'); ?>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                            <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
-                                                                        </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                                <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
