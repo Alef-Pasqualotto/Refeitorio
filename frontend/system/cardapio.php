@@ -131,7 +131,8 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" href="#">Editar</a></li>
                                                               <li><a class="dropdown-item" href="#">Clonar</a></li>
-                                                              <li><a class="dropdown-item" href="excluir.php">Excluir</a></li>
+                                                              <li><a class="dropdown-item" href="../../backend/excluir.php?registro=2&item_id=">Excluir refeição</a></li>
+                                                              <li><a class="dropdown-item" href="../../backend/excluir.php?registro=3&cardapio_id=1">Excluir cardápio</a></li>
                                                             </ul>
                                                           </div>';
                                                         }
