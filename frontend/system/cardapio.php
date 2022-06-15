@@ -1,4 +1,5 @@
 <?php session_start();
+header('https://www.youtube.com/watch?v=RMMlWvLJBtQ&t=50s');
 error_reporting(0);
 include_once(__DIR__ . '..\..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
