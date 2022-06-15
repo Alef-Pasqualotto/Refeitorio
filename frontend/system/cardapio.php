@@ -115,7 +115,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                 <tr>
                                                     <td><?php echo htmlentities($i + 1); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["nome_do_prato"]); ?></td>
-                                                    <td><?php echo htmlentities($itens[$i]["tipo"]); ?></td>
+                                                    <td><?php echo htmlentities($itens[$i]["tipo_formatado"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["data_formatada"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["ingredientes"]); ?></td>
                                                     <td><?php echo htmlentities($itens[$i]["soma_das_calorias"]); ?></td>
@@ -130,9 +130,14 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" href="#">Editar</a></li>
+<<<<<<< HEAD
                                                               <li><a class="dropdown-item" href="#">Clonar</a></li>
                                                               <li><a class="dropdown-item" href="../../backend/excluir.php?registro=2&item_id=">Excluir refeição</a></li>
                                                               <li><a class="dropdown-item" href="../../backend/excluir.php?registro=3&cardapio_id=1">Excluir cardápio</a></li>
+=======
+                                                              <li><a class="dropdown-item" href='. __DIR__ . '..\..\..\backend\buscar.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
+                                                              <li><a class="dropdown-item" href="excluir.php">Excluir</a></li>
+>>>>>>> 825ea6dab2f63fbf4149fa7b6b6855e62eca75ac
                                                             </ul>
                                                           </div>';
                                                         }
