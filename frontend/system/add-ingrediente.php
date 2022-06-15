@@ -57,7 +57,9 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     </div>
                                 </div>
 
-                                <?php include_once('includes/ingredientes.php'); ?>
+                                <div class="col-8">
+                                            <?php include_once('includes/ingredientes.php'); ?>
+                                        </div>
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
