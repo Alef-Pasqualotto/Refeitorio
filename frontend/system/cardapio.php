@@ -154,7 +154,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                              <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Editar</a></li>
                                                               <li><a class="dropdown-item" href=add-cardapio.php?tipo='. $itens[$i]["tipo"] . '&nutricionista_id='. $itens[$i]["usuario_id"] .'&cardapio_id='. $itens[$i]["cardapio_id"] .'>Clonar</a></li>
                                                               <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id='. $itens[$i]["item_id"] . '>Excluir refeição</a></li>
                                                               <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id='. $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
@@ -181,13 +181,11 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                                             <input type="date" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="dtnasc" class="form-label">Nutricionista</label>
+                                                                            <label for="dtnasc" class="form-label">Ingrediente</label>
                                                                             <input type="text" class="form-control" id="dtnasc">
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                            <button id="excluir" class="btn btn-danger" type="button" action='excluir.php?id="<?php echo $item['id']; ?>"' method="get">Excluir</button>
-                                                                            <button id="clonar" class="btn btn-success" type="button">Clonar</button>
                                                                             <button id="alterar" class="btn btn-primary" type="button">Alterar</button>
                                                                         </div>
                                                                     </div>

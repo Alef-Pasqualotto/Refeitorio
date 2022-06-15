@@ -56,10 +56,14 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6"><input type="number" required name="calorias" placeholder="Insira o valor calórico" class="form-control" value="" id="num"></textarea>
                                     </div>
                                 </div>
-
-                                <div class="col-8">
-                                            <?php include_once('includes/ingredientes.php'); ?>
-                                        </div>
+                                <hr>                                
+                                <div class="col-2">Excluir ingredientes:</div>
+                                <div class="row" style="margin-top:1%;">
+                                    <div class="col-2">&nbsp;</div>
+                                    <div class="col-6">
+                                        <?php include_once('includes/ingredientes.php'); ?>
+                                    </div>
+                                </div>
 
                                 <div class="row" style="margin-top:1%">
                                     <div class="col-2">&nbsp;</div>
