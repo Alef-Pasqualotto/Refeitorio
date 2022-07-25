@@ -47,7 +47,7 @@ switch ($dados['registro']) {
                 ':crn' => $dados['crn']
                            
             ]);
-            header('location:..\frontend\system\gerenciar.php');
+            header('location:..\frontend\gerenciar.php');
             break; 
     }
 ?>

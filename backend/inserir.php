@@ -29,7 +29,7 @@ switch ($dados['registro']) {
                 ':nome' => $dados['nome'],
                 ':calorias' => $dados['calorias']
             ]);
-            header('location:..\frontend\system\add-ingrediente.php');
+            header('location:..\frontend\add-ingrediente.php');
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
             die('Já existe um ingrediente com o mesmo nome cadastrado');
@@ -58,7 +58,7 @@ switch ($dados['registro']) {
                     ':ingrediente_id' => $ingrediente,
                     ':item_id' => $item_id[0]
                 ]);
-            header('location:..\frontend\system\add-refeicao.php');
+            header('location:..\frontend\add-refeicao.php');
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
@@ -82,7 +82,7 @@ switch ($dados['registro']) {
             ':email' => $dados['email'],
             ':crn' => isset($dados['crn']) ? $dados['crn'] : null
         ]);
-        header('location:..\frontend\system\login.php');
+        header('location:..\..\backend\login.php');
         
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário
@@ -119,7 +119,7 @@ switch ($dados['registro']) {
                     ':item_id' => $item,
                     ':cardapio_id' => $cardapio_id[0]
                 ]);
-            header('location:..\frontend\system\add-cardapio.php');
+            header('location:..\frontend\add-cardapio.php');
         }
         } else{
             // Por enquanto só morre, depois mostrar de forma mais amigável para o usuário

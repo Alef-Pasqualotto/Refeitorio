@@ -29,7 +29,7 @@
                                 </div>
                                 <h3 class="text-center font-weight-light my-4">Cadastro de Usuário</h3>
                                 <div class="card-body">
-                                    <form method="post" name="registration" action="../../backend/inserir.php">
+                                    <form method="post" name="registration" action="../backend/inserir.php">
                                         <div class="form-floating mb-3">
                                             <input type="hidden" value="3" name="registro" id="registro">
                                             <input class="form-control" id="nome" type="text" name="nome"
@@ -63,7 +63,7 @@
                                         if($sessao == false)
                                         {
                                         }else{
-                                        include_once(__DIR__ . '..\..\..\backend\conecta.php');
+                                        include_once(__DIR__ . '..\..\backend\conecta.php');
                                         $banco = new Banco;
                             $conn = $banco->conectar();
                             if($banco->autentica($_SESSION["usuario_id"])){
@@ -88,7 +88,7 @@
                                 <?php
                                 $sessao = isset($_SESSION['usuario_id']);
                                         if($sessao == false)
-                                        { echo '<div class="small"><a href="login.php">Já possui uma conta? Faça o Login</a></div><hr />';
+                                        { echo '<div class="small"><a href=..\backend\login.php>Já possui uma conta? Faça o Login</a></div><hr />';
                                         }else{ echo '<div class="small"><a href="cardapio.php">Voltar</a></div>';
                                 }
                                 ?>    

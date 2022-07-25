@@ -40,7 +40,7 @@
                             }
                             ?>
 
-                               <a class="nav-link" href="logout.php">
+                               <a class="nav-link" href=<?php echo ('..\backend\logout.php')?>>
                                 <div class="sb-nav-link-icon"><i class="fa fa-sign-out"></i></div>
                              Logout
                             </a>

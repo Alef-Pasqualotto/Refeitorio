@@ -1,8 +1,8 @@
 <?php session_start();
 error_reporting(0);
-include_once(__DIR__ . '..\..\..\backend\conecta.php');
+include_once(__DIR__ . '..\..\backend\conecta.php');
 if (strlen($_SESSION["usuario_id"]) == 0) {
-    header('location:logout.php');
+    header('location:' . __DIR__ . '..\..\backend\conecta.php');
 } else {
     $banco = new Banco;
     if (!empty($_GET['data'])) {
@@ -90,7 +90,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                     <div class="col-6">
                                         <input id="data-pesquisa" type="date" required name="data" <?php echo empty($data) ? '' : 'value="' . $data . '"' ?> placeholder="Pesquisa por semana" class="form-control">
                                     </div>
-                                    <a href="../../../refeitorio/frontend/system/cardapio.php">Limpar</a>
+                                    <a href="../../../refeitorio/frontend/cardapio.php">Limpar</a>
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
@@ -129,7 +129,7 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            $itens = include_once(__DIR__ . '..\..\..\backend\buscar.php');
+                                            $itens = include_once(__DIR__ . '..\..\backend\buscar.php');
                                             for ($i = 0; $i < count($itens); $i++) {
                                             ?>
 
@@ -151,8 +151,8 @@ if (strlen($_SESSION["usuario_id"]) == 0) {
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                               <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Editar</a></li>
                                                               <li><a class="dropdown-item" href=add-cardapio.php?tipo=' . $itens[$i]["tipo"] . '&nutricionista_id=' . $itens[$i]["usuario_id"] . '&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Clonar</a></li>
-                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=2&item_id=' . $itens[$i]["item_id"] . '>Excluir refeição</a></li>
-                                                              <li><a class="dropdown-item" href=../../backend/excluir.php?registro=3&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
+                                                              <li><a class="dropdown-item" href=../backend/excluir.php?registro=2&item_id=' . $itens[$i]["item_id"] . '>Excluir refeição</a></li>
+                                                              <li><a class="dropdown-item" href=../backend/excluir.php?registro=3&cardapio_id=' . $itens[$i]["cardapio_id"] . '>Excluir cardápio</a></li> 
                                                               
                                                             </ul>
                                                           </div>';

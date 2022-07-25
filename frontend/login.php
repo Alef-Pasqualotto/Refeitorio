@@ -1,5 +1,5 @@
 <?php session_start();
-include_once(__DIR__ . '..\..\..\backend\conecta.php');
+include_once(__DIR__ . '..\..\backend\conecta.php');
 if(isset($_POST['login']))
   {
     $email = $_POST['email'];
@@ -72,7 +72,7 @@ if(isset($_POST['login']))
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="registration.php">Novo no site? Cadastre-se!</a></div>
                                         <hr />
-                                           <div class="small"><a href="logout.php">Página Inicial</a></div>
+                                           <div class="small"><a href=<?php echo ('..\backend\logout.php')?>>Página Inicial</a></div>
                                     </div>
                                 </div>
                             </div>

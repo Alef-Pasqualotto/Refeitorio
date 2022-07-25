@@ -26,7 +26,7 @@
                                 <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                                 Cadastro
                             </a>
-           <a class="nav-link" href="login.php">
+           <a class="nav-link" href='login.php'>
                                 <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                                 Login
                             </a>

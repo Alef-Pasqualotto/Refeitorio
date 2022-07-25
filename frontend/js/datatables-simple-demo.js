@@ -9,6 +9,6 @@ window.addEventListener('DOMContentLoaded', event => {
 
     data = document.getElementById("data-pesquisa");    
     if(data.value != null){
-        data.addEventListener("focusout", ()=>{window.location.href = `../../../refeitorio/frontend/system/cardapio.php?data=${data.value}`});
+        data.addEventListener("focusout", ()=>{window.location.href = `../../../refeitorio/frontend/cardapio.php?data=${data.value}`});
     }
 });
